@@ -1,4 +1,4 @@
-# Tinkoff-invest-UI
+# worf-of-god
 
 ```sh
 npm install
@@ -26,4 +26,4 @@ yarn build
 ```sh
 docker pull madouma2/tinkoff-invest-web
 ```
-# worf-of-god
+
