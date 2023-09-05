@@ -24,6 +24,6 @@ yarn build
 ### Docker image
 
 ```sh
-docker pull madouma2/tinkoff-invest-web
+docker pull madouma2/word-of-god
 ```
 
