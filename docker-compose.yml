@@ -1,0 +1,11 @@
+version: '3'
+services:
+  word-of-god:
+    container_name: word-of-god
+    image: madouma2/word-of-god:latest
+    ports:
+      - "8080:80"
+
+
+
+
