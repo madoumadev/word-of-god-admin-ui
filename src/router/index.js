@@ -8,15 +8,20 @@ const router = createRouter({
   linkExactActiveClass: 'exact-active-link',
   routes: [
     {
-      path: '/admin',
-      alias: '',
+      path: '',
       name: 'Home',
       components: { default: HomeView, header: NavbarComponent },
       children: [
         {
+          alias: '',
           path: 'videos',
           name: 'VideosView',
           component: () => import('../views/VideosView.vue')
+        },
+        {
+          path: 'videos',
+          name: 'StreamingView',
+          component: () => import('../views/StreamingView.vue')
         }
       ]
     }
