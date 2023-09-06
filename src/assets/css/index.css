@@ -5,12 +5,16 @@
 
 @layer components {
     .link-class{
-        @apply px-4 py-2 transition-all capitalize
+        @apply px-4 py-2 transition-all capitalize font-semibold
     }
     .active-class {
         @apply text-black
     }
     .exact-active-link{
-        @apply bg-blue-800 text-white
+        @apply  border-blue-800 text-blue-800
+    }
+
+    .wfg-input{
+        @apply  border border-gray-300 text-gray-900 text-sm block w-full px-2.5 py-1.5 focus:outline-amber-400
     }
 }

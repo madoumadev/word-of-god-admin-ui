@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 import { AllRequests } from '@/api_requests/requests'
 export default createStore({
   state: {
+    isOpen: false,
     videosList: [
       {
         id: 1,
@@ -21,6 +22,60 @@ export default createStore({
         preacher: 'Preacher',
         file: 'file',
         status: 'INACTIVE'
+      },
+      {
+        id: 3,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
+      },
+      {
+        id: 4,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
+      },
+      {
+        id: 3,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
+      },
+      {
+        id: 4,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
+      },
+      {
+        id: 3,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
+      },
+      {
+        id: 4,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
       }
     ]
   },
@@ -28,10 +83,18 @@ export default createStore({
   getters: {
     videosList: (state) => {
       return state.videosList
+    },
+
+    isOpen: (state) => {
+      return state.isOpen
     }
   },
 
-  mutations: {},
+  mutations: {
+    SET_IS_OPEN: (state, status) => {
+      state.isOpen = status
+    }
+  },
 
   actions: {
     // For testing only
