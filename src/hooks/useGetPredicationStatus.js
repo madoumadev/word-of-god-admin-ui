@@ -1,18 +1,20 @@
 import { ACTIVE_STATUS, INACTIVE_STATUS } from '@/constants/status-constants'
 
-const videoStatusList = {
+const predicationsStatusList = {
   active: Symbol(ACTIVE_STATUS),
   inactive: Symbol(INACTIVE_STATUS)
 }
 
-export const useGetVideoStatus = (videoStatus = videoStatusList.active.description) => {
+export const useGetPredicationStatus = (
+  predicationStatus = predicationsStatusList.active.description
+) => {
   let status
 
-  switch (videoStatus) {
-    case videoStatusList.active.description:
+  switch (predicationStatus) {
+    case predicationsStatusList.active.description:
       status = 'Да'
       break
-    case videoStatusList.inactive.description:
+    case predicationsStatusList.inactive.description:
       status = 'Нет'
       break
     default:

@@ -1,4 +1,4 @@
-import { API } from '@/api_requests/api'
+import { API } from '@/http/api'
 
 export const AllRequests = {
   /*

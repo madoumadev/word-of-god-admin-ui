@@ -2,8 +2,8 @@ import './assets/css/tailwind.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from '@/vuex/store'
+import router from './routes'
+import store from './store'
 const app = createApp(App)
 
 app.use(router)

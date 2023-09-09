@@ -1,4 +1,4 @@
-import Http from '@/api_requests/axios'
+import Http from '@/http/axios'
 
 export const API = {
   makeGetRequest,

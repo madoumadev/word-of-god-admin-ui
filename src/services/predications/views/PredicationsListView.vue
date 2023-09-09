@@ -38,7 +38,7 @@
             <td class="px-6 py-4 line-clamp-1">{{ video.title }}</td>
             <td class="px-6 py-4">{{ video.preacher }}</td>
             <td class="px-6 py-4">
-              {{ useGetVideoStatus(video.status) }}
+              {{ useGetPredicationStatus(video.status) }}
             </td>
             <td class="px-6 py-4">
               <a :href="video.link" target="_blank">
@@ -78,7 +78,7 @@
                   {{ video.preacher }}, {{ video.createdAt }}
                 </p>
                 <p class="text-sm text-gray-500 truncate">
-                  АКТИВНОСТЬ : {{ useGetVideoStatus(video.status) }}
+                  АКТИВНОСТЬ : {{ useGetPredicationStatus(video.status) }}
                 </p>
                 <div class="flex space-x-2 mt-2">
                   <button
@@ -115,13 +115,13 @@
 import { computed, defineComponent } from 'vue'
 import { useStore } from 'vuex'
 import { LinkIcon, PencilIcon, XMarkIcon, DocumentTextIcon } from '@heroicons/vue/24/outline'
-import { useGetVideoStatus } from '@/use/useGetVideoStatus'
-import VideoModalComponent from '@/components/VideoModalComponent.vue'
-import AddVideoForm from '@/components/AddVideoForm.vue'
+import { useGetPredicationStatus } from '@/hooks/useGetPredicationStatus'
+import VideoModalComponent from '@/components/shared/BaseModal/ModalComponent.vue'
+import AddVideoForm from '@/services/predications/components/AddPredicationForm.vue'
 
 export default defineComponent({
   name: 'VideosView',
-  methods: { useGetVideoStatus },
+  methods: { useGetPredicationStatus },
   components: {
     AddVideoForm,
     VideoModalComponent,
@@ -140,7 +140,7 @@ export default defineComponent({
 
     return {
       saveVideo,
-      videosList: computed(() => store.getters['videosList']),
+      videosList: computed(() => store.getters['predicationsStore/videosList']),
       handleOpenAddVideo: () => store.commit('SET_IS_OPEN', !store.getters['isOpen'])
     }
   }

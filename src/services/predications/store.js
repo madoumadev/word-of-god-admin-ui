@@ -1,8 +1,9 @@
-import { createStore } from 'vuex'
-import { AllRequests } from '@/api_requests/requests'
-export default createStore({
+import { AllRequests } from '@/services/predications/requests'
+
+export const predicationsStore = {
+  namespaced: true,
+
   state: {
-    isOpen: false,
     videosList: [
       {
         id: 1,
@@ -76,6 +77,42 @@ export default createStore({
         preacher: 'Preacher',
         file: 'file',
         status: 'INACTIVE'
+      },
+      {
+        id: 5,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
+      },
+      {
+        id: 6,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
+      },
+      {
+        id: 7,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
+      },
+      {
+        id: 8,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
       }
     ]
   },
@@ -83,18 +120,10 @@ export default createStore({
   getters: {
     videosList: (state) => {
       return state.videosList
-    },
-
-    isOpen: (state) => {
-      return state.isOpen
     }
   },
 
-  mutations: {
-    SET_IS_OPEN: (state, status) => {
-      state.isOpen = status
-    }
-  },
+  mutations: {},
 
   actions: {
     // For testing only
@@ -109,4 +138,4 @@ export default createStore({
         })
     }
   }
-})
+}
