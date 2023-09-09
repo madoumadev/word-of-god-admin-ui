@@ -1,17 +1,35 @@
 <template>
   <header class="w-full sticky top-0 bg-white z-10">
-    <nav class="bg-white border-gray-200 py-4 shadow">
+    <nav class="border-gray-200 py-4 shadow">
       <div class="flex items-center justify-between max-w-screen-7xl px-4 mx-auto">
-        <a
-          href=""
-          @click="$router.push({ name: 'HomeView' })"
-          class="hidden sm:inline-flex space-x-2"
-        >
+        <a href="" @click="$router.push({ name: 'HomeView' })" class=" ">
           <h1 class="font-bold uppercase hover:text-gray-900">Божье Слово верно</h1>
         </a>
-        <div class="flex space-x-4">Godran</div>
+        <div class="sm:hidden">
+          <button @click.prevent="store.commit('SET_IS_TOGGLE_MOBILE_MENU', !isToggleMobileMenu)">
+            <Bars3BottomRightIcon v-if="!isToggleMobileMenu" class="w-8 h-8" />
+            <XMarkIcon v-else class="w-8 h-8" />
+          </button>
+        </div>
+
+        <div class="hidden sm:inline-flex items-center space-x-4">
+          <router-link :to="{ name: 'ProfileView' }" class="">
+            <span>Godran</span>
+          </router-link>
+          <button type="button">
+            <PowerIcon class="w-5 h-5" />
+          </button>
+        </div>
       </div>
     </nav>
   </header>
 </template>
-<script setup></script>
+<script setup>
+import { Bars3BottomRightIcon, XMarkIcon, PowerIcon } from '@heroicons/vue/24/outline'
+import { useStore } from 'vuex'
+import { computed } from 'vue'
+
+const store = useStore()
+
+const isToggleMobileMenu = computed(() => store.getters.isToggleMobileMenu)
+</script>

@@ -1,19 +1,17 @@
 <script>
 import { defineComponent } from 'vue'
+import AsideNavDesktopComponent from '@/components/asidenav/AsideNavDesktopComponent.vue'
+import AsideNavMobileComponent from '@/components/asidenav/AsideNavMobileComponent.vue'
 
 export default defineComponent({
-  name: 'AsideNavComponent'
+  name: 'AsideNavComponent',
+  components: { AsideNavMobileComponent, AsideNavDesktopComponent }
 })
 </script>
 
 <template>
-  <div class="w-[250px] border-r-2 h-full hidden sm:block">
-    <div class="space-y-2 mt-4 flex flex-col">
-      <router-link :to="{ name: 'HomeView' }" class="link-class">Рабочий стол </router-link>
-      <router-link :to="{ name: 'PredicationsListView' }" class="link-class"> Видео </router-link>
-      <router-link :to="{ name: 'StreamingView' }" class="link-class"> Трансляция </router-link>
-    </div>
-  </div>
+  <AsideNavDesktopComponent />
+  <AsideNavMobileComponent />
 </template>
 
 <style scoped></style>
