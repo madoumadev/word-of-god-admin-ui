@@ -1,17 +1,53 @@
 <script>
 import { defineComponent } from 'vue'
+import HeroIcon from '@/components/icons/HeroIcon.vue'
 
 export default defineComponent({
-  name: 'AsideNavDesktopComponent'
+  name: 'AsideNavDesktopComponent',
+  components: { HeroIcon },
+
+  data() {
+    return {
+      menusRoutes: [
+        {
+          name: 'HomeView',
+          label: 'Рабочий стол',
+          icon: 'ComputerDesktopIcon'
+        },
+        {
+          name: 'PredicationsListView',
+          label: 'Видео',
+          icon: 'PlayIcon'
+        },
+        {
+          name: 'StreamingView',
+          label: 'Трансляция',
+          icon: 'VideoCameraIcon'
+        }
+      ]
+    }
+  },
+  computed: {
+    currentRoute() {
+      return this.$route.name
+    }
+  }
 })
 </script>
 
 <template>
-  <div class="w-[250px] border-r-2 h-full hidden sm:block">
-    <div class="space-y-2 mt-4 flex flex-col">
-      <router-link :to="{ name: 'HomeView' }" class="link-class">Рабочий стол </router-link>
-      <router-link :to="{ name: 'PredicationsListView' }" class="link-class"> Видео </router-link>
-      <router-link :to="{ name: 'StreamingView' }" class="link-class"> Трансляция </router-link>
+  <div class="w-[300px] h-[600px] hidden sm:block bg-white rounded-3xl mx-6 mt-6">
+    <div class="mt-4 flex flex-col">
+      <router-link
+        v-for="menu in menusRoutes"
+        :key="menu.name"
+        :to="{ name: menu.name }"
+        active-class="menu-item-desktop-active"
+        class="link-class menu-item-desktop"
+      >
+        <HeroIcon :icon-name="menu.icon" icon-type="outline" class="w-6 h-6" />
+        <span> {{ menu.label }}</span>
+      </router-link>
     </div>
   </div>
 </template>

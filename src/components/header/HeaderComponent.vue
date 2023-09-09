@@ -1,9 +1,9 @@
 <template>
-  <header class="w-full sticky top-0 bg-white z-10">
-    <nav class="border-gray-200 py-4 shadow">
+  <header class="px-4">
+    <nav class="py-4">
       <div class="flex items-center justify-between max-w-screen-7xl px-4 mx-auto">
         <a href="" @click="$router.push({ name: 'HomeView' })" class=" ">
-          <h1 class="font-bold uppercase hover:text-gray-900">Божье Слово верно</h1>
+          <h1 class="uppercase text-gray-500 hover:text-gray-900 sm:text-2xl">Божье Слово верно</h1>
         </a>
         <div class="sm:hidden">
           <button @click.prevent="store.commit('SET_IS_TOGGLE_MOBILE_MENU', !isToggleMobileMenu)">

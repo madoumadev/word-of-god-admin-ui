@@ -4,6 +4,7 @@ export const predicationsStore = {
   namespaced: true,
 
   state: {
+    predicationsIds: [],
     videosList: [
       {
         id: 1,
@@ -17,42 +18,6 @@ export const predicationsStore = {
       },
       {
         id: 2,
-        title: 'Что такое Lorem Ipsum?',
-        createdAt: '10.09.2023',
-        link: 'https://link-here.com',
-        preacher: 'Preacher',
-        file: 'file',
-        status: 'INACTIVE'
-      },
-      {
-        id: 3,
-        title: 'Что такое Lorem Ipsum?',
-        createdAt: '10.09.2023',
-        link: 'https://link-here.com',
-        preacher: 'Preacher',
-        file: 'file',
-        status: 'INACTIVE'
-      },
-      {
-        id: 4,
-        title: 'Что такое Lorem Ipsum?',
-        createdAt: '10.09.2023',
-        link: 'https://link-here.com',
-        preacher: 'Preacher',
-        file: 'file',
-        status: 'INACTIVE'
-      },
-      {
-        id: 3,
-        title: 'Что такое Lorem Ipsum?',
-        createdAt: '10.09.2023',
-        link: 'https://link-here.com',
-        preacher: 'Preacher',
-        file: 'file',
-        status: 'INACTIVE'
-      },
-      {
-        id: 4,
         title: 'Что такое Lorem Ipsum?',
         createdAt: '10.09.2023',
         link: 'https://link-here.com',
@@ -113,6 +78,42 @@ export const predicationsStore = {
         preacher: 'Preacher',
         file: 'file',
         status: 'INACTIVE'
+      },
+      {
+        id: 9,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
+      },
+      {
+        id: 10,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
+      },
+      {
+        id: 11,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
+      },
+      {
+        id: 12,
+        title: 'Что такое Lorem Ipsum?',
+        createdAt: '10.09.2023',
+        link: 'https://link-here.com',
+        preacher: 'Preacher',
+        file: 'file',
+        status: 'INACTIVE'
       }
     ]
   },
@@ -120,10 +121,22 @@ export const predicationsStore = {
   getters: {
     videosList: (state) => {
       return state.videosList
+    },
+
+    predicationsIds: (state) => {
+      return state.predicationsIds
     }
   },
 
-  mutations: {},
+  mutations: {
+    PUSH_PREDICATION_ID: (state, id) => {
+      state.predicationsIds.push(id)
+    },
+
+    SET_PREDICATION_IDS_SELECTION: (state) => {
+      state.predicationsIds = []
+    }
+  },
 
   actions: {
     // For testing only
