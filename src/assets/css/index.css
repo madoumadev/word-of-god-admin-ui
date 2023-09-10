@@ -16,7 +16,11 @@
     }
 
     .wfg-input{
-        @apply  border border-gray-300 text-gray-900 text-sm block w-full px-2.5 py-1.5 focus:outline-amber-400
+        @apply rounded-lg border border-gray-300 text-gray-900 text-sm block w-full px-2.5 py-2 focus:outline-amber-400
+    }
+
+    .wfg-btn-primary {
+        @apply inline-flex items-center rounded-xl text-white px-4 py-2 hover:bg-blue-800 bg-blue-600 transition-colors
     }
 
     .menu-item-desktop{

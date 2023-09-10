@@ -10,7 +10,7 @@ export default defineComponent({
     return {
       menusRoutes: [
         {
-          name: 'HomeView',
+          name: 'DashboardPage',
           label: 'Рабочий стол',
           icon: 'ComputerDesktopIcon'
         },
@@ -42,7 +42,7 @@ export default defineComponent({
         v-for="menu in menusRoutes"
         :key="menu.name"
         :to="{ name: menu.name }"
-        active-class="menu-item-desktop-active"
+        exact-active-class="menu-item-desktop-active"
         class="link-class menu-item-desktop"
       >
         <HeroIcon :icon-name="menu.icon" icon-type="outline" class="w-6 h-6" />

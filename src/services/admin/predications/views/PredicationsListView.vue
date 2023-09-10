@@ -2,11 +2,7 @@
   <div class="overflow-y-auto h-full">
     <div class="flex justify-between items-center">
       <h5 class="text-2xl text-gray-900">Записи</h5>
-      <button
-        type="button"
-        @click.prevent="handleOpenAddVideo"
-        class="inline-flex items-center rounded-xl text-white px-4 py-2 hover:bg-blue-800 bg-blue-600 transition-colors"
-      >
+      <button type="button" @click.prevent="handleOpenAddVideo" class="wfg-btn-primary">
         Добавить запись
       </button>
     </div>
@@ -19,7 +15,7 @@
       <!--   desktop   -->
       <table class="w-full text-sm text-left text-gray-500 hidden sm:table">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-          <tr class="">
+          <tr>
             <th class="px-6 py-3">
               <div class="flex items-center justify-center h-full w-full">
                 <input
@@ -39,9 +35,7 @@
             <th scope="col" class="px-6 py-3">Действия</th>
           </tr>
         </thead>
-        <tbody
-          class="border rounded-xl [&>*:nth-child(even)]:bg-gray-100 [&>*:nth-child(odd)]:bg-white"
-        >
+        <tbody class="[&>*:nth-child(even)]:bg-gray-100 [&>*:nth-child(odd)]:bg-white">
           <tr v-for="video in videosList" :key="video.id" class="border-b">
             <td @click.stop="() => {}">
               <div class="flex items-center justify-center h-full w-full">
@@ -139,10 +133,10 @@ import { useStore } from 'vuex'
 import { LinkIcon, PencilIcon, XMarkIcon, DocumentTextIcon } from '@heroicons/vue/24/outline'
 import { useGetPredicationStatus } from '@/hooks/useGetPredicationStatus'
 import VideoModalComponent from '@/components/shared/BaseModal/ModalComponent.vue'
-import AddVideoForm from '@/services/predications/components/AddPredicationForm.vue'
+import AddVideoForm from '@/services/admin/predications/components/AddPredicationForm.vue'
 
 export default defineComponent({
-  name: 'VideosView',
+  name: 'PredicationsListView',
   methods: { useGetPredicationStatus },
   components: {
     AddVideoForm,

@@ -1,5 +1,5 @@
 import { AsideNavComponent, HeaderComponent } from '@/utils/navs'
-import PredicationsListView from '@/services/predications/views/PredicationsListView.vue'
+import PredicationsListView from '@/services/admin/predications/views/PredicationsListView.vue'
 
 export const predicationsRoutes = [
   {

@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { predicationsStore } from '@/services/predications/store'
+import { predicationsStore } from '@/services/admin/predications/store'
 
 export default createStore({
   state: {

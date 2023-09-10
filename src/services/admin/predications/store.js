@@ -1,4 +1,4 @@
-import { AllRequests } from '@/services/predications/requests'
+import { AllRequests } from '@/services/admin/predications/requests'
 
 export const predicationsStore = {
   namespaced: true,

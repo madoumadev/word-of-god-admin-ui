@@ -1,5 +1,5 @@
 <template>
-  <header class="px-4">
+  <header class="sm:px-4">
     <nav class="py-4">
       <div class="flex items-center justify-between max-w-screen-7xl px-4 mx-auto">
         <a href="" @click="$router.push({ name: 'HomeView' })" class=" ">
@@ -14,7 +14,7 @@
 
         <div class="hidden sm:inline-flex items-center space-x-4">
           <router-link :to="{ name: 'ProfileView' }" class="">
-            <span>Godran</span>
+            <span>Администратор</span>
           </router-link>
           <button type="button">
             <PowerIcon class="w-5 h-5" />
