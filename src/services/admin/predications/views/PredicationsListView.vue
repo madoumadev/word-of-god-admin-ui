@@ -22,7 +22,7 @@
                   id="checkAllPredications"
                   type="checkbox"
                   v-model="isAllChecked"
-                  class="mt-1 border accent-black border-gray-50 rounded w-5 h-5 outline-none"
+                  class="mt-1 border accent-gray-700 border-gray-50 rounded w-5 h-5 outline-none"
                 />
               </div>
             </th>
@@ -43,7 +43,7 @@
                   type="checkbox"
                   v-model="predicationsIds"
                   :value="video.id"
-                  class="mt-1 border accent-black border-gray-50 rounded w-5 h-5 outline-none"
+                  class="mt-1 border accent-gray-700 border-gray-50 rounded w-5 h-5 outline-none"
                 />
               </div>
             </td>

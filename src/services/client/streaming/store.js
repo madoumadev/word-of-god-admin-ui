@@ -114,33 +114,6 @@ export const predicationsStore = {
         preacher: 'Preacher',
         file: 'file',
         status: 'INACTIVE'
-      },
-      {
-        id: 13,
-        title: 'Что такое Lorem Ipsum?',
-        createdAt: '10.09.2023',
-        link: 'https://link-here.com',
-        preacher: 'Preacher',
-        file: 'file',
-        status: 'INACTIVE'
-      },
-      {
-        id: 14,
-        title: 'Что такое Lorem Ipsum?',
-        createdAt: '10.09.2023',
-        link: 'https://link-here.com',
-        preacher: 'Preacher',
-        file: 'file',
-        status: 'INACTIVE'
-      },
-      {
-        id: 15,
-        title: 'Что такое Lorem Ipsum?',
-        createdAt: '10.09.2023',
-        link: 'https://link-here.com',
-        preacher: 'Preacher',
-        file: 'file',
-        status: 'INACTIVE'
       }
     ]
   },

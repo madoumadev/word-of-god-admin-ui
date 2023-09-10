@@ -1,14 +1,15 @@
-import { AsideNavComponent, HeaderComponent } from '@/utils/navs'
-import PredicationsListView from '@/services/admin/predications/views/PredicationsListView.vue'
+import { HeaderComponent } from '@/utils/navs'
+import PredicationsView from '@/services/client/predications/views/PredicationsView.vue'
+import ClientVideoAsideNav from '@/services/client/predications/components/ClientVideoAsideNav.vue'
 
-export const predicationsRoutes = [
+export const clientsPredicationsRoutes = [
   {
-    path: '/predications',
-    name: 'PredicationsListView',
+    path: '/videos',
+    name: 'PredicationsView',
     components: {
-      default: PredicationsListView,
+      default: PredicationsView,
       header: HeaderComponent,
-      asideNav: AsideNavComponent
+      asideNav: ClientVideoAsideNav
     }
   }
 ]

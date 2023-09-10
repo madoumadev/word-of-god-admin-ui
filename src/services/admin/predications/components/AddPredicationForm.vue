@@ -98,17 +98,12 @@ export default {
     </div>
 
     <div class="flex justify-start items-center space-x-4 mt-5">
-      <button
-        type="submit"
-        class="px-4 py-1.5 bg-blue-600 text-white hover:bg-blue-700 inline-flex items-center space-x-2 capitalize"
-      >
-        добавить
-      </button>
+      <button type="submit" class="wfg-btn-primary">добавить</button>
       <button
         @click="onClose"
         ref="cancelButtonRef"
         type="button"
-        class="py-2 px-3 text-sm font-medium text-gray-500 bg-white border border-gray-200 hover:bg-gray-100"
+        class="py-2 px-3 text-sm rounded-xl font-medium text-gray-500 bg-white border border-gray-200 hover:bg-gray-100"
       >
         Cancel
       </button>

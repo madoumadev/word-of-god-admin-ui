@@ -1,11 +1,10 @@
 <script>
 import { defineComponent } from 'vue'
-import AdminAsideNav from '@/services/admin/partials/AdminAsideNav.vue'
-import AsideNavLayout from '@/components/shared/AsideNavLayout.vue'
+import HeroIcon from '@/components/icons/HeroIcon.vue'
 
 export default defineComponent({
-  name: 'AsideNavDesktopComponent',
-  components: { AsideNavLayout, AdminAsideNav },
+  name: 'AdminAsideNav',
+  components: { HeroIcon },
 
   data() {
     return {
@@ -37,9 +36,16 @@ export default defineComponent({
 </script>
 
 <template>
-  <AsideNavLayout>
-    <AdminAsideNav />
-  </AsideNavLayout>
+  <div class="mt-4 flex flex-col">
+    <router-link
+      v-for="menu in menusRoutes"
+      :key="menu.name"
+      :to="{ name: menu.name }"
+      exact-active-class="menu-item-desktop-active"
+      class="link-class menu-item-desktop"
+    >
+      <HeroIcon :icon-name="menu.icon" icon-type="outline" class="w-6 h-6" />
+      <span> {{ menu.label }}</span>
+    </router-link>
+  </div>
 </template>
-
-<style scoped></style>

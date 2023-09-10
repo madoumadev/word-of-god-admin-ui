@@ -13,5 +13,4 @@ export default defineComponent({
   <AsideNavDesktopComponent />
   <AsideNavMobileComponent />
 </template>
-
-<style scoped></style>
+qs

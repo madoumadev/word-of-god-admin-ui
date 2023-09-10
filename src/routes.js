@@ -1,15 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
 import { adminRoutes } from '@/services/admin/routes'
-import { HeaderComponent } from '@/utils/navs'
+import { clientRoutes } from '@/services/client/routes'
 
 const combineRoutes = [
-  {
-    path: '',
-    name: 'HomeView',
-    components: { default: HomeView, header: HeaderComponent }
-  },
-
+  ...clientRoutes,
   // admin routes
   ...adminRoutes
 ]

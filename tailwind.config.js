@@ -5,8 +5,11 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Niramit', 'Sans-serif']
+      },
+      colors: {
+        primary: '#006799'
       }
     }
   },
-  plugins: []
+  plugins: [require('@tailwindcss/aspect-ratio')]
 }

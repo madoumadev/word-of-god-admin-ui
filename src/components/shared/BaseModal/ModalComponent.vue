@@ -40,7 +40,7 @@ const onClose = () => store.commit('SET_IS_OPEN', !isOpen.value)
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div
-              class="inline-block bg-white mx-4 sm:mx-0 w-full max-w-md h-auto overflow-hidden shadow-xl transform transition-all sm:align-middle"
+              class="inline-block bg-white rounded-xl mx-4 sm:mx-0 w-full max-w-md h-auto overflow-hidden shadow-xl transform transition-all sm:align-middle"
             >
               <div class="p-8 text-left">
                 <slot />

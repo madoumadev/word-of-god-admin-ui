@@ -20,7 +20,7 @@
     }
 
     .wfg-btn-primary {
-        @apply inline-flex items-center rounded-xl text-white px-4 py-2 hover:bg-blue-800 bg-blue-600 transition-colors
+        @apply inline-flex items-center rounded-xl text-white px-4 py-2 hover:bg-blue-900 bg-primary transition-colors
     }
 
     .menu-item-desktop{
@@ -28,6 +28,6 @@
     }
 
     .menu-item-desktop-active{
-        @apply border-blue-800 text-blue-800
+        @apply border-primary text-primary
     }
 }
