@@ -7,6 +7,8 @@
 import { computed, defineComponent, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useGetPredicationStatus } from '@/hooks/useGetPredicationStatus'
+import { useTitle } from '@vueuse/core'
+import { APP_NAME } from '@/constants/consts'
 
 export default defineComponent({
   name: 'StreamingClient',
@@ -15,7 +17,7 @@ export default defineComponent({
 
   setup() {
     const store = useStore()
-
+    useTitle('Трансляция - ' + APP_NAME)
     const isAllChecked = ref(false)
     function saveVideo(form) {
       console.log(form)

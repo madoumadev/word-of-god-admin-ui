@@ -59,6 +59,8 @@ import { computed, defineComponent, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useGetPredicationStatus } from '@/hooks/useGetPredicationStatus'
 import HeroIcon from '@/components/icons/HeroIcon.vue'
+import { useTitle } from '@vueuse/core'
+import { APP_NAME } from '@/constants/consts'
 
 export default defineComponent({
   name: 'PredicationsView',
@@ -68,6 +70,7 @@ export default defineComponent({
   setup() {
     const store = useStore()
 
+    useTitle('Видео - ' + APP_NAME)
     const isAllChecked = ref(false)
     function saveVideo(form) {
       console.log(form)
