@@ -33,7 +33,7 @@
             <span>Видео</span>
           </router-link>
           <router-link
-            :to="{ name: 'StreamingClient' }"
+            :to="{ name: 'StreamingClientDirection' }"
             class="text-gray-500"
             exact-active-class="text-primary"
           >
@@ -52,7 +52,14 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const store = useStore()
-const clientRoutes = ['HomeView', 'StreamingClient', 'PredicationsView']
+const clientRoutes = [
+  'HomeView',
+  'StreamingClient',
+  'PredicationsView',
+  'VideoStreamingClient',
+  'StreamingClientDirection',
+  'AudioStreamingClient'
+]
 
 function isAdminRoute() {
   return !clientRoutes.includes(route.name)

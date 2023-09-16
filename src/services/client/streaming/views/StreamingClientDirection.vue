@@ -30,12 +30,21 @@
 
       <div class="grid sm:grid-cols-2 grid-cols-1 gap-4 sm:gap-10">
         <div class="bg-white p-6 rounded-3xl">
-          <button type="button" class="wfg-btn-primary uppercase w-full">
+          <router-link
+            :to="{ name: 'VideoStreamingClient' }"
+            type="button"
+            class="wfg-btn-primary uppercase w-full"
+          >
             смотреть трансляцию
-          </button>
+          </router-link>
         </div>
         <div class="bg-white p-6 rounded-3xl">
-          <button type="button" class="wfg-btn-primary uppercase w-full">слушать трансляцию</button>
+          <router-link
+            :to="{ name: 'AudioStreamingClient' }"
+            type="button"
+            class="wfg-btn-primary uppercase w-full"
+            >слушать трансляцию</router-link
+          >
         </div>
       </div>
     </div>
@@ -49,7 +58,7 @@ import { useTitle } from '@vueuse/core'
 import { APP_NAME } from '@/constants/consts'
 
 export default defineComponent({
-  name: 'StreamingClient',
+  name: 'StreamingClientDirection',
   methods: { useGetPredicationStatus },
   components: {},
 

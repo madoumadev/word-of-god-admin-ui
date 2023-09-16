@@ -16,7 +16,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <AsideNavLayout>
+  <AsideNavLayout class="overflow-y-auto h-full">
     <div class="px-3 py-4 sticky top-0 z-10 bg-white">
       <input type="search" class="wfg-input" placeholder="Search" />
     </div>
