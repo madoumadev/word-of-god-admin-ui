@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { predicationsStore } from '@/services/admin/predications/store'
+import { clientVideosStore } from '@/services/client/predications/store'
 
 export default createStore({
   state: {
@@ -25,6 +25,6 @@ export default createStore({
 
   actions: {},
   modules: {
-    predicationsStore
+    clientVideosStore
   }
 })

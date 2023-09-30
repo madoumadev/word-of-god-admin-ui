@@ -3,8 +3,10 @@
     <div class="bg-white sm:px-4 pb-4 sm:rounded-3xl mt-2 2xl:w-3/4 w-full sticky top-0 z-10">
       <div class="flex justify-between py-3 sm:px-0 px-2">
         <div>
-          <h1 class="line-clamp-1">Молодежный лагерь в Раменском</h1>
-          <span class="text-gray-400">10.09.2023</span>
+          <h1 class="line-clamp-1">{{ videosList[0].snippet.title }}</h1>
+          <span class="text-gray-400">{{
+            getFormattedDate(videosList[0].snippet.publishedAt.value)
+          }}</span>
         </div>
         <div>
           <button
@@ -17,8 +19,9 @@
       </div>
 
       <div class="aspect-w-16 aspect-h-9">
+        <!-- TODO: make videoId dynamic -->
         <iframe
-          src="https://www.youtube.com/embed/AsrYNSIEnZE"
+          :src="`https://www.youtube.com/embed/${videosList[0].snippet.resourceId.videoId}`"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
@@ -55,61 +58,32 @@
   </div>
 </template>
 <script>
-import { computed, defineComponent, ref } from 'vue'
+import { computed, defineComponent, onBeforeMount } from 'vue'
 import { useStore } from 'vuex'
 import { useGetPredicationStatus } from '@/hooks/useGetPredicationStatus'
 import HeroIcon from '@/components/icons/HeroIcon.vue'
 import { useTitle } from '@vueuse/core'
 import { APP_NAME } from '@/constants/consts'
+import getFormattedDate from '../../../../utils/getFormattedDate'
 
 export default defineComponent({
   name: 'PredicationsView',
   components: { HeroIcon },
-  methods: { useGetPredicationStatus },
+  methods: { getFormattedDate, useGetPredicationStatus },
 
   setup() {
     const store = useStore()
 
     useTitle('Видео - ' + APP_NAME)
-    const isAllChecked = ref(false)
-    function saveVideo(form) {
-      console.log(form)
-    }
+
+    onBeforeMount(() => {
+      store.dispatch('clientVideosStore/getVideos')
+    })
 
     return {
-      predicationsIds: computed(() => store.getters['predicationsStore/predicationsIds']),
-      saveVideo,
-      isAllChecked,
-      videosList: computed(() => store.getters['predicationsStore/videosList']),
+      predicationsIds: computed(() => store.getters['clientVideosStore/predicationsIds']),
+      videosList: computed(() => store.getters['clientVideosStore/videosList']),
       handleOpenAddVideo: () => store.commit('SET_IS_OPEN', !store.getters['isOpen'])
-    }
-  },
-
-  watch: {
-    predicationsIds(newValue) {
-      const $dom = document.querySelector('#checkAllPredications')
-      if (newValue.length === 0) {
-        $dom.checked = false
-        $dom.indeterminate = false
-      } else if (newValue.length === this.videosList.length) {
-        $dom.checked = true
-        $dom.indeterminate = false
-      } else {
-        $dom.checked = false
-        $dom.indeterminate = true
-      }
-    },
-
-    isAllChecked(checkState) {
-      if (checkState) {
-        this.videosList.forEach((p) => {
-          if (!this.videosList.includes(p.id)) {
-            this.$store.commit('predicationsStore/PUSH_PREDICATION_ID', p.id)
-          }
-        })
-      } else {
-        this.$store.commit('predicationsStore/SET_PREDICATION_IDS_SELECTION', [])
-      }
     }
   }
 })

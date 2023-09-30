@@ -2,14 +2,16 @@
 import { defineComponent } from 'vue'
 import { mapGetters } from 'vuex'
 import AsideNavLayout from '@/components/shared/AsideNavLayout.vue'
+import getFormattedDate from '@/utils/getFormattedDate'
 
 export default defineComponent({
   name: 'ClientVideoAsideNav',
+  methods: { getFormattedDate },
   components: { AsideNavLayout },
 
   computed: {
     ...mapGetters({
-      videosList: 'predicationsStore/videosList'
+      videosList: 'clientVideosStore/videosList'
     })
   }
 })
@@ -33,8 +35,8 @@ export default defineComponent({
           >
             <div class="col-end-1 relative">
               <img
-                src="https://wordofgod.ru/design/wog/img/photo/godovschina_2015.jpg"
-                class="w-[120px] h-[75px] object-cover rounded-xl"
+                :src="video.snippet.thumbnails.default.url"
+                :class="`w-[${video.snippet.thumbnails.default.width}px] h-[${video.snippet.thumbnails.default.height}px] object-cover rounded-xl`"
                 alt=""
               />
               <span class="bg-black text-xs px-1.5 text-white absolute bottom-1 right-1"
@@ -42,8 +44,10 @@ export default defineComponent({
               >
             </div>
             <div class="col-span-6 text-gray-500 text-sm">
-              <span class="line-clamp-2">{{ video.title }}</span>
-              <span class="line-clamp-1 pt-2">{{ video.createdAt }}</span>
+              <span class="line-clamp-2">{{ video.snippet.title }}</span>
+              <span class="line-clamp-1 pt-2">{{
+                getFormattedDate(video.snippet.publishedAt.value)
+              }}</span>
             </div>
           </router-link>
         </li>

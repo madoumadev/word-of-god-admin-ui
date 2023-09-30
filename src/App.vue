@@ -7,7 +7,7 @@
       <div class="max-w-screen-3xl mx-auto flex relative h-full overflow-hidden">
         <router-view name="asideNav" />
         <div class="overflow-y-auto flex-1">
-          <router-view class="sm:p-4" />
+          <router-view class="" />
         </div>
       </div>
     </main>
