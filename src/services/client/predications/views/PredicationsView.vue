@@ -3,7 +3,6 @@
     <div class="bg-white sm:px-4 pb-4 sm:rounded-3xl mt-2 2xl:w-3/4 w-full sticky top-0 z-10">
       <div class="flex justify-between py-3 sm:px-0 px-2">
         <div>
-          <h1 class="line-clamp-1">{{ videosList[0].snippet.title }}</h1>
           <span class="text-gray-400">{{
             getFormattedDate(videosList[0].snippet.publishedAt.value)
           }}</span>
@@ -18,10 +17,9 @@
         </div>
       </div>
 
-      <div class="aspect-w-16 aspect-h-9">
-        <!-- TODO: make videoId dynamic -->
+      <div v-if="currentVideoId" class="aspect-w-16 aspect-h-9">
         <iframe
-          :src="`https://www.youtube.com/embed/${videosList[0].snippet.resourceId.videoId}`"
+          :src="`https://www.youtube.com/embed/${currentVideoId}`"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
@@ -58,13 +56,14 @@
   </div>
 </template>
 <script>
-import { computed, defineComponent, onBeforeMount } from 'vue'
+import { computed, defineComponent, onBeforeMount, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 import { useGetPredicationStatus } from '@/hooks/useGetPredicationStatus'
 import HeroIcon from '@/components/icons/HeroIcon.vue'
 import { useTitle } from '@vueuse/core'
 import { APP_NAME } from '@/constants/consts'
 import getFormattedDate from '../../../../utils/getFormattedDate'
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
   name: 'PredicationsView',
@@ -72,18 +71,29 @@ export default defineComponent({
   methods: { getFormattedDate, useGetPredicationStatus },
 
   setup() {
-    const store = useStore()
-
     useTitle('Видео - ' + APP_NAME)
+    const store = useStore()
 
     onBeforeMount(() => {
       store.dispatch('clientVideosStore/getVideos')
     })
 
     return {
+      currentVideoId: computed(() => store.getters['clientVideosStore/currentVideoId']),
       predicationsIds: computed(() => store.getters['clientVideosStore/predicationsIds']),
       videosList: computed(() => store.getters['clientVideosStore/videosList']),
       handleOpenAddVideo: () => store.commit('SET_IS_OPEN', !store.getters['isOpen'])
+    }
+  },
+
+  watch: {
+    '$route.params': {
+      immediate: true,
+      deep: true,
+
+      handler(newValue) {
+        this.$store.commit('clientVideosStore/SET_CURRENT_VIDEO_ID', newValue?.videoId)
+      }
     }
   }
 })

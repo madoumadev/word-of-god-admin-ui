@@ -4,7 +4,7 @@ export const clientVideosStore = {
   namespaced: true,
 
   state: {
-    predicationsIds: [],
+    currentVideoId: null,
     videos: [
       {
         etag: 'ODb2-XSPZe8OK7zbbkTFpW9U4VE',
@@ -58,8 +58,8 @@ export const clientVideosStore = {
       return state.videos
     },
 
-    predicationsIds: (state) => {
-      return state.predicationsIds
+    currentVideoId: (state) => {
+      return state.currentVideoId
     }
   },
 
@@ -68,17 +68,24 @@ export const clientVideosStore = {
       state.predicationsIds.push(id)
     },
 
-    SET_PREDICATION_IDS_SELECTION: (state) => {
-      state.predicationsIds = []
+    SET_CURRENT_VIDEO_ID: (state, id) => {
+      state.currentVideoId = id
+    },
+
+    SET_VIDEOS: (state, videos) => {
+      state.videos = videos
     }
   },
 
   actions: {
-    getVideos() {
+    getVideos({ commit }) {
       videosRequests
         .getVideos()
         .then((response) => {
-          console.log(response)
+          if (response.status === 200) {
+            commit('SET_VIDEOS', response.data.items)
+            commit('SET_CURRENT_VIDEO_ID', response.data.items[0]?.snippet.resourceId.videoId)
+          }
         })
         .catch((error) => {
           console.log(error)

@@ -4,7 +4,7 @@ import ClientVideoAsideNav from '@/services/client/predications/components/Clien
 
 export const clientsPredicationsRoutes = [
   {
-    path: '/videos',
+    path: '/videos/:videoId?',
     name: 'PredicationsView',
     components: {
       default: PredicationsView,

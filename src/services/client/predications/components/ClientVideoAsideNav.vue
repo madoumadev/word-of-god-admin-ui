@@ -30,7 +30,10 @@ export default defineComponent({
           class="py-2 hover:bg-gray-50 pl-2 rounded-xl transition-colors"
         >
           <router-link
-            :to="{ name: 'PredicationsView', query: { id: video.id } }"
+            :to="{
+              name: 'PredicationsView',
+              params: { videoId: video.snippet.resourceId.videoId }
+            }"
             class="grid grid-cols-7 gap-4"
           >
             <div class="col-end-1 relative">
@@ -43,11 +46,8 @@ export default defineComponent({
                 >10:34</span
               >
             </div>
-            <div class="col-span-6 text-gray-500 text-sm">
-              <span class="line-clamp-2">{{ video.snippet.title }}</span>
-              <span class="line-clamp-1 pt-2">{{
-                getFormattedDate(video.snippet.publishedAt.value)
-              }}</span>
+            <div :title="video.snippet.title" class="col-span-6 text-gray-500 text-sm">
+              <span class="line-clamp-4">{{ video.snippet.title }}</span>
             </div>
           </router-link>
         </li>
