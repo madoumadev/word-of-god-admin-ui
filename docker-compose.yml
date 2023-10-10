@@ -1,11 +1,22 @@
-version: '3'
+version: '3.9'
 services:
-  word-of-god:
-    container_name: word-of-god
-    image: madouma2/word-of-god:latest
+#  word-of-god:
+#    container_name: word-of-god
+#    #    image: madouma2/word-of-god:latest
+#    ports:
+#      - "80:80"
+
+  wordofgodui:
+    hostname: word.atmosphereapp.ru
+    container_name: wordofgodui
+    build: .
+    tty: true
+    restart: unless-stopped
     ports:
-      - "8080:80"
+      - "80:80"
+    networks:
+      - wordofgodui_bridge
 
-
-
-
+networks:
+  wordofgodui_bridge:
+    driver: bridge
