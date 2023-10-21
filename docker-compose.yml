@@ -7,7 +7,6 @@ services:
 #      - "80:80"
 
   wordofgodui:
-    hostname: word.atmosphereapp.ru
     container_name: wordofgodui
     build: .
     tty: true
