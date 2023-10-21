@@ -1,6 +1,6 @@
 <template>
   <ClientLayout>
-    <div class="overflow-hidden lg:flex h-full w-full">
+    <div v-if="!loading" class="overflow-hidden lg:flex h-full w-full">
       <div
         v-if="!!params?.videoId"
         class="sm:px-4 pb-4 sm:rounded-3xl mt-2 w-full sticky top-0 z-10"
@@ -61,19 +61,20 @@
       </div>
       <div v-if="!params?.videoId" class="text-gray-500">Select video</div>
     </div>
+    <div v-else>Loading ...</div>
   </ClientLayout>
 </template>
 <script>
 import { computed, defineComponent, onBeforeMount } from 'vue'
 import { useStore } from 'vuex'
-import { useGetPredicationStatus } from '@/hooks/useGetPredicationStatus'
-import HeroIcon from '@/components/icons/HeroIcon.vue'
 import { useTitle } from '@vueuse/core'
-import { APP_NAME } from '@/constants/consts'
 import getFormattedDate from '../../../../utils/getFormattedDate'
 import { useRoute } from 'vue-router'
 import ClientLayout from '../../../../layouts/ClientLayout.vue'
 import VideoCard from '../components/VideoCard.vue'
+import { APP_NAME } from '../../../../constants/consts'
+import { useGetPredicationStatus } from '../../../../hooks/useGetPredicationStatus'
+import HeroIcon from '../../../../components/icons/HeroIcon.vue'
 
 export default defineComponent({
   name: 'PredicationsView',
@@ -95,6 +96,7 @@ export default defineComponent({
       params,
       videosList,
       currentVideoId: computed(() => store.getters['clientVideosStore/currentVideoId']),
+      loading: computed(() => store.getters['clientVideosStore/loading']),
       predicationsIds: computed(() => store.getters['clientVideosStore/predicationsIds']),
       handleOpenAddVideo: () => store.commit('SET_IS_OPEN', !store.getters['isOpen'])
     }
