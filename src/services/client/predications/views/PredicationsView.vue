@@ -27,7 +27,7 @@
             allowfullscreen
           ></iframe>
         </div>
-        <div class="hidden lg:flex flex-col bg-white mt-4 p-6">
+        <div class="hidden 2xl:flex flex-col bg-white mt-4 p-6">
           <p class="capitalize text-gray-400 text-sm mb-4">БЛИЖАЙШАЯ ТРАНСЛЯЦИЯ</p>
           <div class="inline-flex items-center mb-2 space-x-2">
             <HeroIcon icon-type="outline" icon-name="CalendarIcon" class="w-4 h-5 text-gray-400" />
@@ -89,7 +89,7 @@ export default defineComponent({
     let params = computed(() => route.params)
 
     onBeforeMount(() => {
-      store.dispatch('clientVideosStore/getVideos')
+      store.dispatch('clientVideosStore/getVideos', params)
     })
 
     return {

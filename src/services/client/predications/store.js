@@ -1,4 +1,5 @@
 import { videosRequests } from './requests'
+import router from '../../../routes'
 
 export const clientVideosStore = {
   namespaced: true,
@@ -41,7 +42,7 @@ export const clientVideosStore = {
   },
 
   actions: {
-    getVideos({ commit }) {
+    getVideos({ commit }, params) {
       commit('SET_LOADING', true)
       videosRequests
         .getVideos()
@@ -50,6 +51,13 @@ export const clientVideosStore = {
           if (response.status === 200) {
             commit('SET_VIDEOS', response.data.items)
             commit('SET_CURRENT_VIDEO_ID', response.data.items[0]?.snippet.resourceId.videoId)
+
+            if (!params?.videoId) {
+              router.push({
+                name: 'PredicationsView',
+                params: { videoId: response.data.items[0]?.snippet.resourceId.videoId }
+              })
+            }
           }
         })
         .catch((error) => {

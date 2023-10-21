@@ -18,19 +18,6 @@ export default defineComponent({
     params() {
       return this.$route.params
     }
-  },
-
-  created() {
-    let params = this.$route.params
-
-    if (params && params?.videoId) return
-
-    if (this.videosList.length) {
-      this.$router.push({
-        name: 'PredicationsView',
-        params: { videoId: this.videosList[0]?.snippet.resourceId.videoId }
-      })
-    }
   }
 })
 </script>
