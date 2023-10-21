@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <ClientLayout>
+    <router-view />
+  </ClientLayout>
 </template>
 <script>
 import { computed, defineComponent, ref } from 'vue'
@@ -7,11 +9,12 @@ import { useStore } from 'vuex'
 import { useGetPredicationStatus } from '@/hooks/useGetPredicationStatus'
 import { useTitle } from '@vueuse/core'
 import { APP_NAME } from '@/constants/consts'
+import ClientLayout from '../../../../layouts/ClientLayout.vue'
 
 export default defineComponent({
   name: 'MainStreamingClientPage',
   methods: { useGetPredicationStatus },
-  components: {},
+  components: { ClientLayout },
 
   setup() {
     const store = useStore()

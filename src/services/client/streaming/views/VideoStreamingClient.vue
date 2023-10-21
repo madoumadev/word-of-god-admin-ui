@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-y-auto h-full sm:p-0">
-    <div class="px-4 flex mt-10 sm:mt-0 flex-col">
+    <div class="px-4 flex mt-10 sm:my-2 flex-col">
       <div class="inline-flex space-x-2">
         <span
           class="block text-xs bg-red-600 border-red-300 rounded-full h-6 w-6 border-2 animate-pulse"

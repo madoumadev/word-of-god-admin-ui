@@ -4,6 +4,12 @@
 @tailwind utilities;
 
 
+@layer base {
+    :root {
+        --primary-color: rgba(192, 192, 192, 0.3);
+    }
+}
+
 @layer components {
     .link-class{
         @apply px-4 py-3 transition-all capitalize text-gray-500
@@ -30,4 +36,30 @@
     .menu-item-desktop-active{
         @apply border-primary text-primary
     }
+}
+
+
+::-webkit-scrollbar {
+    display: block;
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background:none ;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(124, 123, 123, 0.31);
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color);
+}
+
+::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }

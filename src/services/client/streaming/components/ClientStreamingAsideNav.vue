@@ -17,7 +17,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <AsideNavLayout>
+  <AsideNavLayout class="bg-white">
     <div class="mt-4 flex flex-col p-6 overflow-hidden space-y-10 divide-y h-full">
       <div class="flex flex-col">
         <p class="capitalize text-gray-400 text-sm mb-4">БЛИЖАЙШАЯ ТРАНСЛЯЦИЯ</p>

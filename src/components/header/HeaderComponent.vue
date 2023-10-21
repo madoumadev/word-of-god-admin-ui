@@ -1,5 +1,5 @@
 <template>
-  <header class="sm:px-4">
+  <header class="sm:pl-4 lg:bg-gray-100 bg-white">
     <nav class="py-4">
       <div class="flex items-center justify-between max-w-screen-7xl px-4 mx-auto">
         <a href="" @click="$router.push({ name: 'HomeView' })" class="inline-flex space-x-2">
@@ -27,15 +27,15 @@
         <div v-else class="inline-flex space-x-4">
           <router-link
             :to="{ name: 'PredicationsView' }"
-            class="text-gray-500"
-            exact-active-class="text-primary"
+            class="text-gray-500 px-4 py-1.5 rounded-md"
+            active-class="text-primary bg-white "
           >
             <span>Видео</span>
           </router-link>
           <router-link
             :to="{ name: 'StreamingClientDirection' }"
-            class="text-gray-500"
-            exact-active-class="text-primary"
+            class="text-gray-500 px-4 py-1.5 rounded-md"
+            active-class="text-primary bg-white"
           >
             <span>Трансляция</span>
           </router-link>
