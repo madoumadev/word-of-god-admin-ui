@@ -1,22 +1,16 @@
 <template>
   <ClientLayout>
-    <div v-if="!loading" class="overflow-hidden lg:flex h-full w-full">
-      <div
-        v-if="!!params?.videoId"
-        class="sm:px-4 pb-4 sm:rounded-3xl mt-2 w-full sticky top-0 z-10"
-      >
-        <div class="flex justify-between items-center py-3 sm:px-0 mb-4 px-4">
-          <div>
-            <span class="">{{ getFormattedDate(videosList[0].snippet.publishedAt.value) }}</span>
-          </div>
-          <div>
-            <button
-              class="inline-flex items-center space-x-2 bg-gray-100 px-4 py-2 text-gray-500 rounded-xl hover:text-gray-700"
-            >
-              <HeroIcon icon-name="ArrowDownTrayIcon" icon-type="outline" class="w-6 h-6" />
-              <span class="hidden sm:block">Скачать видео-файл</span>
-            </button>
-          </div>
+    <div v-if="!loading" class="overflow-y-auto lg:flex h-full w-full pb-[50px]">
+      <div v-if="!!params?.videoId" class="pb-4 w-full sticky top-0 z-10">
+        <div class="flex justify-between items-center py-3 bg-white lg:rounded-md px-4 lg:mb-4">
+          <span class="line-clamp-1">{{ videosList[0].snippet.title }}</span>
+
+          <button
+            class="inline-flex items-center space-x-2 bg-gray-100 px-4 py-2 text-gray-500 rounded-xl hover:text-gray-700"
+          >
+            <HeroIcon icon-name="ArrowDownTrayIcon" icon-type="outline" class="w-6 h-6" />
+            <span class="hidden sm:block">Скачать видео-файл</span>
+          </button>
         </div>
 
         <div v-if="currentVideoId" class="aspect-w-16 aspect-h-9">
@@ -40,10 +34,7 @@
         </div>
       </div>
 
-      <div
-        v-if="!!params?.videoId"
-        class="lg:hidden px-4 flex flex-col py-2 overflow-y-scroll h-full"
-      >
+      <div v-if="!!params?.videoId" class="lg:hidden px-4 flex flex-col h-full">
         <ul class="space-y-2">
           <li
             v-for="video in videosList"
@@ -89,7 +80,7 @@ export default defineComponent({
     let params = computed(() => route.params)
 
     onBeforeMount(() => {
-      store.dispatch('clientVideosStore/getVideos', params)
+      store.dispatch('clientVideosStore/getVideos', params.value?.videoId)
     })
 
     return {
@@ -97,8 +88,7 @@ export default defineComponent({
       videosList,
       currentVideoId: computed(() => store.getters['clientVideosStore/currentVideoId']),
       loading: computed(() => store.getters['clientVideosStore/loading']),
-      predicationsIds: computed(() => store.getters['clientVideosStore/predicationsIds']),
-      handleOpenAddVideo: () => store.commit('SET_IS_OPEN', !store.getters['isOpen'])
+      predicationsIds: computed(() => store.getters['clientVideosStore/predicationsIds'])
     }
   },
 

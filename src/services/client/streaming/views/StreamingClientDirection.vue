@@ -4,7 +4,7 @@
       <h5 class="text-2xl text-gray-900 pb-10">Трансляция</h5>
     </div>
     <div class="max-w-screen-md mx-auto">
-      <figure class="my-10 text-center">
+      <figure class="lg:mb-0 mb-8 lg:my-10 text-center">
         <svg
           class="w-10 h-10 mx-auto mb-3 text-gray-400 dark:text-gray-600"
           aria-hidden="true"
@@ -17,7 +17,7 @@
           />
         </svg>
         <blockquote>
-          <p class="text-md italic text-gray-500">
+          <p class="text-xs lg:text-lg italic text-gray-500">
             Если у вас нет церкви, куда пойти, мы будем очень рады, если вы присоединитесь к
             трансляции нашего Богослужения. Но, если у вас есть пастор и церковь, которую вы
             поддерживаете, тогда посещайте вашу драгоценную церковь. Стойте с вашим пастором,
@@ -28,7 +28,7 @@
         </blockquote>
       </figure>
 
-      <div class="grid sm:grid-cols-2 grid-cols-1 gap-4 sm:gap-10">
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-4 lg:gap-10">
         <div class="bg-white p-6 rounded-3xl">
           <router-link
             :to="{ name: 'VideoStreamingClient' }"

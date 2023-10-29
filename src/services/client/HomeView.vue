@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full h-screen">
+  <div class="relative w-full overflow-hidden">
     <div class="relative overflow-hidden h-screen flex items-center justify-center">
       <div class="">
         <img
@@ -12,7 +12,7 @@
         <div class="max-w-screen-md mx-auto px-10 sm:px-0">
           <figure class="my-10 text-center">
             <a href="" @click="$router.push({ name: 'HomeView' })" class="">
-              <h1 class="uppercase text-2xl text-primary hover:text-blue-900 sm:text-8xl">
+              <h1 class="uppercase text-4xl text-primary hover:text-blue-900 lg:text-8xl">
                 Божье Слово
               </h1>
             </a>
@@ -28,7 +28,7 @@
               />
             </svg>
             <blockquote>
-              <p class="text-md italic text-gray-500">
+              <p class="text-xs lg:text-lg italic text-gray-500">
                 "Когда я думаю об Африке, Индии и о всём мире, миллионы язычников кричат и вопиют о
                 милости, и кто пойдёт? Не брошюры им раздавать, но принести им Иисуса Христа. Кто-то
                 в Его Присутствии, как Моисей, который мог бы отправиться туда и показать им

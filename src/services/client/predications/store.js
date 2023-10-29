@@ -42,21 +42,30 @@ export const clientVideosStore = {
   },
 
   actions: {
-    getVideos({ commit }, params) {
+    getVideos({ commit }, videoId) {
       commit('SET_LOADING', true)
+
+      const handleCurrentVideoId = (videoId) => {
+        router
+          .push({
+            name: 'PredicationsView',
+            params: { videoId: videoId }
+          })
+          .then()
+        commit('SET_CURRENT_VIDEO_ID', videoId)
+      }
+
       videosRequests
         .getVideos()
         .then((response) => {
           commit('SET_LOADING', false)
           if (response.status === 200) {
             commit('SET_VIDEOS', response.data.items)
-            commit('SET_CURRENT_VIDEO_ID', response.data.items[0]?.snippet.resourceId.videoId)
 
-            if (!params?.videoId) {
-              router.push({
-                name: 'PredicationsView',
-                params: { videoId: response.data.items[0]?.snippet.resourceId.videoId }
-              })
+            if (!videoId) {
+              handleCurrentVideoId(response.data.items[0]?.snippet.resourceId.videoId)
+            } else {
+              handleCurrentVideoId(videoId)
             }
           }
         })

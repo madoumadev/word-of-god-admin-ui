@@ -1,9 +1,12 @@
 <template>
-  <div class="flex w-full lg:justify-center sm:items-center h-full p-4 sm:p-0">
-    <div class="max-w-screen-sm w-full mx-auto mt-10 sm:mt-0">
+  <div class="h-full overflow-y-auto">
+    <div class="flex my-2 flex-col">
+      <h1 class="mb-5 lg:px-0 px-4">Аудиотрансляция</h1>
+    </div>
+    <div class="w-full mx-auto lg:mt-8 mt-2">
       <div class="relative z-10">
         <div
-          class="bg-white border-slate-100 transition-all duration-500 border-b rounded-xl p-4 pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8"
+          class="bg-white border-slate-100 transition-all duration-500 border-b lg:rounded-xl p-4 pb-6 sm:p-10 sm:pb-8 lg:p-6 xl:p-10 xl:pb-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8"
         >
           <div class="flex items-center space-x-4">
             <button
@@ -24,8 +27,8 @@
                   >
                   </span>
                   <div>
-                    <h1 class="line-clamp-1">Молодежный лагерь в Раменском</h1>
-                    <span class="text-gray-400 py-2">{{
+                    <h1 class="line-clamp-1 lg:text-lg text-xs">Молодежный лагерь в Раменском</h1>
+                    <span class="text-gray-400 py-2 lg:text-lg text-xs">{{
                       getFormattedDate('2023-09-26T07:58:30.996+0200')
                     }}</span>
                   </div>
@@ -60,6 +63,14 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="mt-8 lg:px-0 px-4">
+      <router-link
+        :to="{ name: 'VideoStreamingClient' }"
+        class="text-blue-500 hover:underline hover:text-blue-900 capitalize"
+        >видеотрансляция</router-link
+      >
     </div>
   </div>
 </template>

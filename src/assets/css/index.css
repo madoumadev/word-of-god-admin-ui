@@ -10,6 +10,8 @@
     }
 }
 
+
+
 @layer components {
     .link-class{
         @apply px-4 py-3 transition-all capitalize text-gray-500

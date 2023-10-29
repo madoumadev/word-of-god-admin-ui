@@ -49,7 +49,9 @@ export default defineComponent({
       <div class="flex flex-col space-y-2 pt-4">
         <p class="uppercase text-gray-400 text-sm mb-4">КОНТАКТЫ</p>
         <div class="">
-          <p class="text-sm text-black font-bold">info@wordofgod.ru</p>
+          <a href="mailto:info@wordofgod.ru" target="_blank" class="text-sm text-black font-bold"
+            >info@wordofgod.ru</a
+          >
         </div>
       </div>
     </div>

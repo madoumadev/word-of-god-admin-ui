@@ -1,5 +1,5 @@
 <template>
-  <header class="sm:pl-4 lg:bg-gray-100 bg-white">
+  <header class="lg:pl-4 bg-gray-100 lg:border-0 border-b">
     <nav class="py-4">
       <div class="flex items-center justify-between max-w-screen-7xl px-4 mx-auto">
         <a href="" @click="$router.push({ name: 'HomeView' })" class="inline-flex space-x-2">
@@ -15,7 +15,7 @@
           </button>
         </div>
 
-        <div v-if="isAdminRoute()" class="hidden sm:inline-flex items-center space-x-4">
+        <div v-if="isAdminRoute()" class="hidden lg:inline-flex items-center space-x-4">
           <router-link :to="{ name: 'ProfileView' }" class="">
             <span>Администратор</span>
           </router-link>
@@ -24,18 +24,18 @@
           </button>
         </div>
 
-        <div v-else class="inline-flex space-x-4">
+        <div v-else class="inline-flex lg:space-x-4">
           <router-link
             :to="{ name: 'PredicationsView' }"
             class="text-gray-500 px-4 py-1.5 rounded-md"
-            active-class="text-primary bg-white "
+            active-class="text-primary bg-white font-bold"
           >
             <span>Видео</span>
           </router-link>
           <router-link
             :to="{ name: 'StreamingClientDirection' }"
             class="text-gray-500 px-4 py-1.5 rounded-md"
-            active-class="text-primary bg-white"
+            active-class="text-primary bg-white font-bold"
           >
             <span>Трансляция</span>
           </router-link>
