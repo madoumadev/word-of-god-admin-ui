@@ -11,8 +11,8 @@ services:
     build: .
     tty: true
     restart: unless-stopped
-    ports:
-      - "3333:80"
+    expose:
+      - "80"
     networks:
       - wordofgodui_bridge
 
