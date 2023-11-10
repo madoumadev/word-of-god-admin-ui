@@ -14,8 +14,9 @@ services:
     expose:
       - "80"
     networks:
-      - wordofgodui_bridge
+      - internal
+
 
 networks:
-  wordofgodui_bridge:
-    driver: bridge
+  internal:
+    external: true
