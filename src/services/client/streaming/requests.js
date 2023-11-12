@@ -8,5 +8,10 @@ export const AllRequests = {
   // For testing only
   getComments() {
     return API.makeGetRequest(`comments`)
+  },
+
+  // For testing only
+  getLiveStream() {
+    return API.makeGetRequest(`live`)
   }
 }

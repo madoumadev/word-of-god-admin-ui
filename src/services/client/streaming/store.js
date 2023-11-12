@@ -1,30 +1,47 @@
-import { AllRequests } from './requests'
+import {AllRequests} from './requests'
 
 export const predicationsStore = {
-  namespaced: true,
+    namespaced: true,
 
-  state: {
-    predicationsIds: [],
-    videosList: []
-  },
-
-  getters: {
-    videosList: (state) => {
-      return state.videosList
+    state: {
+        predicationsIds: [],
+        videosList: [],
+        live: {}
     },
 
-    predicationsIds: (state) => {
-      return state.predicationsIds
-    }
-  },
+    getters: {
+        videosList: (state) => {
+            return state.videosList
+        },
 
-  mutations: {
-    PUSH_PREDICATION_ID: (state, id) => {
-      state.predicationsIds.push(id)
+        predicationsIds: (state) => {
+            return state.predicationsIds
+        },
+
+        liveStream: (state) => {
+            return state.live
+        }
     },
 
-    SET_PREDICATION_IDS_SELECTION: (state) => {
-      state.predicationsIds = []
+    mutations: {
+        PUSH_PREDICATION_ID: (state, id) => {
+            state.predicationsIds.push(id)
+        },
+
+        SET_PREDICATION_IDS_SELECTION: (state) => {
+            state.predicationsIds = []
+        },
+
+        SET_LIVE_STREAM: (state, live) => {
+            state.live = live
+        }
+    },
+    actions: {
+        getVideoLive({commit}) {
+            AllRequests.getLiveStream().then(live => {
+                commit('SET_LIVE_STREAM', live.data.items[0])
+                console.log(live)
+            })
+        }
     }
-  }
 }

@@ -1,8 +1,9 @@
 <script>
-import { defineComponent } from 'vue'
-import { mapGetters } from 'vuex'
+import {computed, defineComponent, onBeforeMount} from 'vue'
+import {mapGetters, useStore} from 'vuex'
 import AsideNavLayout from '@/components/shared/AsideNavLayout.vue'
 import HeroIcon from '@/components/icons/HeroIcon.vue'
+import {useRoute} from "vue-router";
 
 export default defineComponent({
   name: 'ClientStreamingAsideNav',
@@ -12,7 +13,20 @@ export default defineComponent({
     ...mapGetters({
       videosList: 'predicationsStore/videosList'
     })
-  }
+  },
+
+  setup() {
+    const store = useStore()
+    const route = useRoute()
+    const live = computed(() => store.getters['predicationsStore/liveStream'])
+    onBeforeMount(() => {
+      store.dispatch('predicationsStore/getVideoLive')
+    })
+
+    return {
+      live,
+    }
+  },
 })
 </script>
 
@@ -23,7 +37,7 @@ export default defineComponent({
         <p class="capitalize text-gray-400 text-sm mb-4">БЛИЖАЙШАЯ ТРАНСЛЯЦИЯ</p>
         <div class="inline-flex items-center mb-2 space-x-2">
           <HeroIcon icon-type="outline" icon-name="CalendarIcon" class="w-4 h-5 text-gray-400" />
-          <p class="text-sm text-black capitalize font-bold">13 СЕНТЯБРЯ, СРЕДА</p>
+          <p class="text-sm text-black capitalize font-bold" v-if="live.snippet && live.snippet.localized">{{ live.snippet.localized.title}}}</p>
         </div>
         <div class="inline-flex items-center space-x-2">
           <HeroIcon icon-type="outline" icon-name="ClockIcon" class="w-4 h-5 text-gray-400" />
