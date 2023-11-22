@@ -24,10 +24,6 @@ export const clientVideosStore = {
   },
 
   mutations: {
-    PUSH_PREDICATION_ID: (state, id) => {
-      state.predicationsIds.push(id)
-    },
-
     SET_CURRENT_VIDEO_ID: (state, id) => {
       state.currentVideoId = id
     },

@@ -18,7 +18,7 @@ defineProps({ video: Object })
       />
       <span class="bg-black text-xs px-1.5 text-white absolute bottom-1 right-1">10:34</span>
     </div>
-    <div :title="video.snippet.title" class="col-span-6 text-gray-500 text-sm">
+    <div :title="video.snippet.title" class="col-span-6 text-sm">
       <span class="line-clamp-4">{{ video.snippet.title }}</span>
     </div>
   </router-link>

@@ -34,12 +34,10 @@
   </div>
 </template>
 <script>
-import {computed, defineComponent, onBeforeMount} from 'vue'
+import { computed, defineComponent, onBeforeMount } from 'vue'
 import { useGetPredicationStatus } from '@/hooks/useGetPredicationStatus'
 import getFormattedDate from '../../../../utils/getFormattedDate'
-import store from "@/store";
-import {useStore} from "vuex";
-import {useRoute} from "vue-router";
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'VideoStreamingClient',
@@ -47,16 +45,14 @@ export default defineComponent({
 
   setup() {
     const store = useStore()
-    const route = useRoute()
     const live = computed(() => store.getters['predicationsStore/liveStream'])
     onBeforeMount(() => {
       store.dispatch('predicationsStore/getVideoLive')
     })
 
     return {
-      live,
+      live
     }
-  },
-
+  }
 })
 </script>

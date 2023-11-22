@@ -1,12 +1,13 @@
 <script>
-import {computed, defineComponent, onBeforeMount} from 'vue'
-import {mapGetters, useStore} from 'vuex'
+import { computed, defineComponent, onBeforeMount } from 'vue'
+import { mapGetters, useStore } from 'vuex'
 import AsideNavLayout from '@/components/shared/AsideNavLayout.vue'
 import HeroIcon from '@/components/icons/HeroIcon.vue'
-import {useRoute} from "vue-router";
+import timestampToLocalTime from '../../../../utils/timestampToLocalTime'
 
 export default defineComponent({
   name: 'ClientStreamingAsideNav',
+  methods: { timestampToLocalTime },
   components: { HeroIcon, AsideNavLayout },
 
   computed: {
@@ -17,16 +18,15 @@ export default defineComponent({
 
   setup() {
     const store = useStore()
-    const route = useRoute()
     const live = computed(() => store.getters['predicationsStore/liveStream'])
     onBeforeMount(() => {
       store.dispatch('predicationsStore/getVideoLive')
     })
 
     return {
-      live,
+      live
     }
-  },
+  }
 })
 </script>
 
@@ -37,35 +37,30 @@ export default defineComponent({
         <p class="capitalize text-gray-400 text-sm mb-4">БЛИЖАЙШАЯ ТРАНСЛЯЦИЯ</p>
         <div class="inline-flex items-center mb-2 space-x-2">
           <HeroIcon icon-type="outline" icon-name="CalendarIcon" class="w-4 h-5 text-gray-400" />
-          <p class="text-sm text-black capitalize font-bold" v-if="live.snippet && live.snippet.localized">{{ live.snippet.localized.title}}}</p>
+          <p class="text-sm text-black capitalize" v-if="live?.snippet && live?.snippet?.localized">
+            {{ live?.snippet?.localized?.title }}}
+          </p>
         </div>
         <div class="inline-flex items-center space-x-2">
           <HeroIcon icon-type="outline" icon-name="ClockIcon" class="w-4 h-5 text-gray-400" />
-          <p class="text-sm font-bold capitalize text-black">В 19:00</p>
-        </div>
-      </div>
-      <div class="flex flex-col space-y-2 pt-4">
-        <p class="uppercase text-gray-400 text-sm mb-4">Адрес</p>
-        <div class="">
-          <p class="text-sm text-black capitalize font-bold">
-            ЦЕРКОВЬ ЕВАНГЕЛЬСКИХ ХРИСТИАН "БЛАГАЯ ВЕСТЬ", Г. МОСКВА
+          <p class="text-sm capitalize text-black">
+            В {{ timestampToLocalTime(live?.snippet?.publishedAt?.value)?.toString() }}
           </p>
         </div>
       </div>
+
       <div class="flex flex-col space-y-2 pt-4">
         <p class="uppercase text-gray-400 text-sm mb-4">СЛУЖЕНИЯ</p>
         <ul class="list-disc pl-4">
-          <li class="text-sm text-black capitalize font-bold mb-2">ВОСКРЕСЕНЬЕ - 12:00,</li>
-          <li class="text-sm text-black capitalize font-bold">СРЕДА - 19:00</li>
+          <li class="text-sm text-black capitalize mb-2">ВОСКРЕСЕНЬЕ - 12:00,</li>
+          <li class="text-sm text-black capitalize">СРЕДА - 19:00</li>
         </ul>
       </div>
 
       <div class="flex flex-col space-y-2 pt-4">
         <p class="uppercase text-gray-400 text-sm mb-4">КОНТАКТЫ</p>
         <div class="">
-          <a href="mailto:info@wordofgod.ru" target="_blank" class="text-sm text-black font-bold"
-            >info@wordofgod.ru</a
-          >
+          <img src="../../../../assets/email.png" class="w-34 scale-110" alt="email" />
         </div>
       </div>
     </div>
