@@ -4,7 +4,7 @@
       <h1 class="capitalize mb-5 lg:px-0 px-4">видеотрансляция</h1>
       <div class="inline-flex space-x-2 bg-white px-4 rounded-md py-2">
         <span
-          class="block text-xs bg-red-600 border-red-300 rounded-full flex-shrink-0 mt-1 lg:mt-3 h-5 w-5 border-2 animate-pulse"
+          class="block text-xs bg-red-600 border-red-300 rounded-full flex-shrink-0 mt-1 h-5 w-5 border-2 animate-pulse"
         >
         </span>
         <div class="flex lg:flex-row flex-col lg:justify-between lg:items-center w-full">

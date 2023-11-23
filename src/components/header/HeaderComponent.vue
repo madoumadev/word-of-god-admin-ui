@@ -26,7 +26,7 @@
 
         <div v-else class="inline-flex lg:space-x-4">
           <router-link
-            :to="{ name: 'PredicationsView' }"
+            :to="{ name: 'PredicationsView', params: { ...route.params } }"
             class="text-gray-500 px-4 py-1.5 rounded-md"
             active-class="text-primary bg-white font-bold"
           >

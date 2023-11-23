@@ -5,8 +5,11 @@
     >
       <div v-if="!!params?.videoId" class="lg:pb-4 w-full bg-white sticky top-0 z-10">
         <div class="flex justify-between items-center px-4 py-6">
-          <span class="line-clamp-1">{{ videosList[0].snippet.title }}</span>
+          <span class="lg:block hidden line-clamp-1">ВИДЕОАРХИВ</span>
 
+          <div class="lg:hidden">
+            <SearchInput />
+          </div>
           <a
             :href="downloadVideo(params?.videoId)"
             target="_blank"
@@ -44,20 +47,25 @@
       </div>
 
       <div v-if="!!params?.videoId" class="lg:hidden lg:px-4 px-2 lg:py-8 flex flex-col h-full">
-        <ul class="space-y-2 py-4">
-          <li
-            v-for="video in videosList"
-            :key="video.id"
-            :class="[
-              params?.videoId === video.snippet.resourceId.videoId
-                ? 'border-gray-500'
-                : 'border-gray-100',
-              'py-2 border-2  pl-2 rounded-xl hover:bg-gray-50 hover:border-gray-500 transition-all duration-300 cursor-pointer bg-white'
-            ]"
-          >
-            <VideoCard :video="video" />
-          </li>
-        </ul>
+        <div>
+          <div v-if="filteredVideos && filteredVideos.length">
+            <TransitionGroup tag="ul" name="fade" class="space-y-2 py-4">
+              <li
+                v-for="video in filteredVideos"
+                :key="video.id"
+                :class="[
+                  params?.videoId === video.snippet.resourceId.videoId
+                    ? 'border-gray-500'
+                    : 'border-gray-100',
+                  'py-2 border-2  pl-2 rounded-xl hover:bg-gray-50 hover:border-gray-500 transition-all duration-300 cursor-pointer bg-white'
+                ]"
+              >
+                <VideoCard :video="video" />
+              </li>
+            </TransitionGroup>
+          </div>
+          <NoData v-else />
+        </div>
       </div>
 
       <div v-if="!params?.videoId" class="text-gray-500">Select video</div>
@@ -65,7 +73,7 @@
   </ClientLayout>
 </template>
 <script>
-import { computed, defineComponent, onBeforeMount } from 'vue'
+import { computed, defineComponent, onBeforeMount, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useTitle } from '@vueuse/core'
 import getFormattedDate from '../../../../utils/getFormattedDate'
@@ -77,18 +85,21 @@ import { useGetPredicationStatus } from '../../../../hooks/useGetPredicationStat
 import HeroIcon from '../../../../components/icons/HeroIcon.vue'
 import { APP_URL } from '../../../../http/config'
 import timestampToLocalTime from '../../../../utils/timestampToLocalTime'
+import SearchInput from '../../../../components/shared/searchInput/SearchInput.vue'
+import NoData from '../../../../components/shared/NoData.vue'
 
 export default defineComponent({
   name: 'PredicationsView',
-  components: { VideoCard, ClientLayout, HeroIcon },
+  components: { NoData, SearchInput, VideoCard, ClientLayout, HeroIcon },
   methods: { timestampToLocalTime, getFormattedDate, useGetPredicationStatus },
 
   setup() {
     useTitle('Видео - ' + APP_NAME)
     const store = useStore()
     const route = useRoute()
-    const videosList = computed(() => store.getters['clientVideosStore/videosList'])
+    const filteredVideos = computed(() => store.getters['clientVideosStore/filteredVideos'])
     let params = computed(() => route.params)
+    const searchQuery = ref('')
 
     onBeforeMount(() => {
       store.dispatch('clientVideosStore/getVideos', params.value?.videoId)
@@ -97,7 +108,8 @@ export default defineComponent({
 
     return {
       params,
-      videosList,
+      filteredVideos,
+      searchQuery,
       downloadVideo: (videoId) => `${APP_URL}/videos/download/${videoId}`,
       currentVideoId: computed(() => store.getters['clientVideosStore/currentVideoId']),
       loading: computed(() => store.getters['clientVideosStore/loading']),

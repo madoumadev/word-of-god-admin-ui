@@ -7,6 +7,7 @@ export const clientVideosStore = {
   state: {
     currentVideoId: null,
     loading: false,
+    searchQuery: '',
     videos: []
   },
 
@@ -20,10 +21,22 @@ export const clientVideosStore = {
     },
     currentVideoId: (state) => {
       return state.currentVideoId
+    },
+    filteredVideos: (state) => {
+      return state.videos.filter((video) =>
+        video?.snippet?.title
+          .toLowerCase()
+          .replace(/\s+/g, '')
+          .includes(state.searchQuery.toLowerCase().replace(/\s+/g, ''))
+      )
     }
   },
 
   mutations: {
+    SET_SEARCH_QUERY: (state, query) => {
+      state.searchQuery = query
+    },
+
     SET_CURRENT_VIDEO_ID: (state, id) => {
       state.currentVideoId = id
     },
@@ -38,6 +51,10 @@ export const clientVideosStore = {
   },
 
   actions: {
+    setSearchQuery({ commit }, query) {
+      commit('SET_SEARCH_QUERY', query)
+    },
+
     getVideos({ commit }, videoId) {
       commit('SET_LOADING', true)
 

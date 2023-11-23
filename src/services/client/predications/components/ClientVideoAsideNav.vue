@@ -1,23 +1,27 @@
 <script>
 import { defineComponent } from 'vue'
-import { mapGetters } from 'vuex'
 import AsideNavLayout from '@/components/shared/AsideNavLayout.vue'
 import getFormattedDate from '@/utils/getFormattedDate'
 import VideoCard from './VideoCard.vue'
+import { mapGetters } from 'vuex'
+import NoData from '../../../../components/shared/NoData.vue'
+import SearchInput from '../../../../components/shared/searchInput/SearchInput.vue'
 
 export default defineComponent({
   name: 'ClientVideoAsideNav',
-  methods: { getFormattedDate },
-  components: { VideoCard, AsideNavLayout },
+  components: { SearchInput, NoData, VideoCard, AsideNavLayout },
 
   computed: {
     ...mapGetters({
-      videosList: 'clientVideosStore/videosList'
+      filteredVideos: 'clientVideosStore/filteredVideos'
     }),
-
     params() {
       return this.$route.params
     }
+  },
+
+  methods: {
+    getFormattedDate
   }
 })
 </script>
@@ -25,12 +29,15 @@ export default defineComponent({
 <template>
   <AsideNavLayout class="bg-white py-4">
     <div class="px-3 sticky top-0 z-10">
-      <input type="search" class="wfg-input" placeholder="Search" />
+      <SearchInput />
     </div>
-    <div class="flex flex-col py-2 overflow-y-auto h-full mt-3">
-      <ul class="px-3 space-y-2 mb-12">
+    <div
+      v-if="filteredVideos && filteredVideos.length"
+      class="flex flex-col py-2 overflow-y-auto h-full mt-3"
+    >
+      <TransitionGroup tag="ul" name="fade" class="px-3 space-y-2 mb-12">
         <li
-          v-for="video in videosList"
+          v-for="video in filteredVideos"
           :key="video.id"
           :class="[
             params?.videoId === video.snippet.resourceId.videoId
@@ -41,7 +48,8 @@ export default defineComponent({
         >
           <VideoCard :video="video" />
         </li>
-      </ul>
+      </TransitionGroup>
     </div>
+    <NoData v-else />
   </AsideNavLayout>
 </template>
