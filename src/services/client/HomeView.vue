@@ -71,10 +71,7 @@ export default {
   data() {
     return {
       videoSource: `${import.meta.env.BASE_URL}cover.mp4`
-    };
-  },
-  mounted() {
-    this.$refs.video.play(); // Ensure video starts playing when component mounts
+    }
   }
-};
+}
 </script>
