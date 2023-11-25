@@ -1,6 +1,6 @@
-import HomeView from '@/services/client/HomeView.vue'
-import { clientStreamingRoutes } from '@/services/client/streaming/routes'
-import { clientsPredicationsRoutes } from '@/services/client/predications/routes'
+import HomeView from './HomeView.vue'
+import { clientStreamingRoutes } from './streaming/routes'
+import { clientsPredicationsRoutes } from './predications/routes'
 
 export const clientRoutes = [
   {

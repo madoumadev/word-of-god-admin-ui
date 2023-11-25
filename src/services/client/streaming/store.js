@@ -6,10 +6,14 @@ export const predicationsStore = {
   state: {
     predicationsIds: [],
     videosList: [],
+    isLoading: false,
     live: {}
   },
 
   getters: {
+    isLoading: (state) => {
+      return state.isLoading
+    },
     videosList: (state) => {
       return state.videosList
     },
@@ -34,14 +38,24 @@ export const predicationsStore = {
 
     SET_LIVE_STREAM: (state, live) => {
       state.live = live
+    },
+
+    SET_LOADING: (state, value) => {
+      state.live = value
     }
   },
 
   actions: {
     getVideoLive({ commit }) {
-      AllRequests.getLiveStream().then((live) => {
-        commit('SET_LIVE_STREAM', live.data.items[0])
-      })
+      commit('SET_LOADING', true)
+      AllRequests.getLiveStream()
+        .then((live) => {
+          commit('SET_LOADING', false)
+          commit('SET_LIVE_STREAM', live.data.items[0])
+        })
+        .catch(() => {
+          commit('SET_LOADING', false)
+        })
     }
   }
 }

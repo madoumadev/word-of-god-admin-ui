@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from 'vue'
-import HeroIcon from '@/components/icons/HeroIcon.vue'
+import HeroIcon from '../../../components/icons/HeroIcon.vue'
 
 export default defineComponent({
   name: 'AdminAsideNav',

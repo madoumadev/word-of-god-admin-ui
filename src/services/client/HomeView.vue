@@ -1,23 +1,26 @@
 <template>
   <div class="relative w-full overflow-hidden">
     <div class="relative overflow-hidden h-screen flex items-center justify-center">
-      <div class="">
-        <img
-          src="https://wordofgod.ru/design/wog/img/bg.jpg"
-          class="absolute block w-full h-screen -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-          alt="..."
-        />
+      <div>
+        <video
+          class="absolute w-full blur-sm object-cover h-screen -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+          autoplay="autoplay"
+          id="coverVideo"
+          loop="loop"
+          muted="muted"
+          playsinline="playsinline"
+        >
+          <source src="public/cover.mp4" type="video/mp4" />
+        </video>
       </div>
-      <div class="z-10">
+      <div class="z-10 bg-black bg-opacity-20 w-full h-full flex justify-center items-center">
         <div class="max-w-screen-md mx-auto px-10 sm:px-0">
           <figure class="my-10 text-center">
             <a href="" @click="$router.push({ name: 'HomeView' })" class="">
-              <h1 class="uppercase text-4xl text-primary hover:text-blue-900 lg:text-8xl">
-                Божье Слово
-              </h1>
+              <h1 class="uppercase text-4xl text-white lg:text-8xl">Божье Слово</h1>
             </a>
             <svg
-              class="w-10 h-10 mx-auto mb-3 mt-10 text-gray-400 dark:text-gray-600"
+              class="w-10 h-10 mx-auto mb-3 mt-10 text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -28,7 +31,7 @@
               />
             </svg>
             <blockquote>
-              <p class="text-xs lg:text-lg italic text-gray-500">
+              <p class="text-xs lg:text-lg italic text-white">
                 "Когда я думаю об Африке, Индии и о всём мире, миллионы язычников кричат и вопиют о
                 милости, и кто пойдёт? Не брошюры им раздавать, но принести им Иисуса Христа. Кто-то
                 в Его Присутствии, как Моисей, который мог бы отправиться туда и показать им

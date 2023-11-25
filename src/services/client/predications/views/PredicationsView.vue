@@ -1,10 +1,10 @@
 <template>
   <ClientLayout>
     <div
-      class="overflow-y-auto lg:flex h-full lg:h-[99%] w-full lg:pb-[50px] bg-white lg:rounded-t-3xl lg:rounded-b-3xl"
+      class="overflow-y-auto lg:flex h-full lg:overflow-hidden w-full bg-white lg:rounded-t-3xl lg:rounded-b-3xl"
     >
-      <div v-if="!!params?.videoId" class="lg:pb-4 w-full bg-white sticky top-0 z-10">
-        <div class="flex justify-between items-center px-4 py-6">
+      <div v-if="!!params?.videoId" class="w-full bg-white sticky top-0 z-10">
+        <div class="flex justify-between items-center px-4 py-3">
           <span class="lg:block hidden line-clamp-1">ВИДЕОАРХИВ</span>
 
           <div class="lg:hidden">
@@ -29,10 +29,16 @@
             allowfullscreen
           ></iframe>
         </div>
-        <div v-if="liveStream" class="hidden lg:flex flex-col bg-white p-6">
-          <p class="capitalize text-gray-400 text-sm mb-4">БЛИЖАЙШАЯ ТРАНСЛЯЦИЯ</p>
+        <div v-if="liveStream" class="hidden lg:flex flex-col bg-white px-6 pt-3">
+          <p class="capitalize text-gray-400 text-sm mb-2">БЛИЖАЙШАЯ ТРАНСЛЯЦИЯ</p>
           <div class="inline-flex items-center mb-2 space-x-2">
-            <HeroIcon icon-type="outline" icon-name="CalendarIcon" class="w-4 h-5 text-gray-400" />
+            <div class="flex-shrink-0">
+              <HeroIcon
+                icon-type="outline"
+                icon-name="CalendarIcon"
+                class="w-4 h-5 text-gray-400"
+              />
+            </div>
             <p class="text-sm text-black capitalize">
               {{ liveStream?.snippet?.title?.toString() }}
             </p>

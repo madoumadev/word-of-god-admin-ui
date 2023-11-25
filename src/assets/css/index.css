@@ -21,7 +21,7 @@
     }
 
     .wfg-input{
-        @apply rounded-lg border border-gray-300 text-gray-900 text-sm block w-full px-4 py-3 focus:outline-blue-500
+        @apply rounded-lg border border-gray-300  text-gray-900 text-sm block w-full px-4 py-3 focus:outline-primary
     }
 
     .wfg-btn-primary {

@@ -1,5 +1,5 @@
 <template>
-  <header class="lg:pl-4 bg-gray-100 lg:border-0 border-b">
+  <header class="lg:pl-4 bg-gray-50 lg:border-0 border-b">
     <nav class="py-4">
       <div class="flex items-center justify-between max-w-screen-7xl px-4 mx-auto">
         <a href="" @click="$router.push({ name: 'HomeView' })" class="inline-flex space-x-2">

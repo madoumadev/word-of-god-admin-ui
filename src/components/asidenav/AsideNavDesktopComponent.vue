@@ -1,38 +1,11 @@
 <script>
 import { defineComponent } from 'vue'
-import AdminAsideNav from '@/services/admin/partials/AdminAsideNav.vue'
-import AsideNavLayout from '@/components/shared/AsideNavLayout.vue'
+import AsideNavLayout from '../shared/AsideNavLayout.vue'
+import AdminAsideNav from '../../services/admin/partials/AdminAsideNav.vue'
 
 export default defineComponent({
   name: 'AsideNavDesktopComponent',
-  components: { AsideNavLayout, AdminAsideNav },
-
-  data() {
-    return {
-      menusRoutes: [
-        {
-          name: 'DashboardPage',
-          label: 'Рабочий стол',
-          icon: 'ComputerDesktopIcon'
-        },
-        {
-          name: 'PredicationsListView',
-          label: 'Видео',
-          icon: 'PlayIcon'
-        },
-        {
-          name: 'StreamingView',
-          label: 'Трансляция',
-          icon: 'VideoCameraIcon'
-        }
-      ]
-    }
-  },
-  computed: {
-    currentRoute() {
-      return this.$route.name
-    }
-  }
+  components: { AdminAsideNav, AsideNavLayout }
 })
 </script>
 

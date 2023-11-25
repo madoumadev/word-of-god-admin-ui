@@ -1,14 +1,14 @@
-import { AsideNavComponent, HeaderComponent } from '@/utils/navs'
-import { accountRoutes } from '@/services/admin/account/routes'
-import { predicationsRoutes } from '@/services/admin/predications/routes'
-import DashboardPage from '@/services/admin/DashboardPage.vue'
-import AdminMainPage from '@/services/admin/AdminMainPage.vue'
-import { streamingRoutes } from '@/services/admin/streaming/routes'
+import AdminMainPage from './AdminMainPage.vue'
+import DashboardPage from './DashboardPage.vue'
+import { accountRoutes } from './account/routes'
+import { streamingRoutes } from './streaming/routes'
+import { predicationsRoutes } from './predications/routes'
+
 export const adminRoutes = [
   {
     path: '/admin',
     name: 'AdminMainPage',
-    components: { default: AdminMainPage, header: HeaderComponent, asideNav: AsideNavComponent },
+    component: AdminMainPage,
     children: [
       {
         path: '',

@@ -48,7 +48,7 @@ export default defineComponent({
 <template>
   <div
     v-show="isToggleMobileMenu"
-    class="bg-white w-full sm:hidden z-50 flex justify-between flex-col h-full"
+    class="bg-white w-full sm:hidden z-50 flex justify-between flex-col h-[100%]"
   >
     <div class="space-y-2 flex flex-col pt-4">
       <router-link

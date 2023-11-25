@@ -86,6 +86,22 @@ export const clientVideosStore = {
           commit('SET_LOADING', false)
           console.error(error)
         })
+    },
+    getVideosInAdmin({ commit }) {
+      commit('SET_LOADING', true)
+      videosRequests
+        .getVideos()
+        .then((response) => {
+          commit('SET_LOADING', false)
+          if (response.status === 200) {
+            commit('SET_VIDEOS', response.data.items)
+            console.log(response.data.items)
+          }
+        })
+        .catch((error) => {
+          commit('SET_LOADING', false)
+          console.error(error)
+        })
     }
   }
 }

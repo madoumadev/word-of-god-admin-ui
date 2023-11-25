@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { adminRoutes } from '@/services/admin/routes'
-import { clientRoutes } from '@/services/client/routes'
+import { adminRoutes } from './services/admin/routes'
+import { clientRoutes } from './services/client/routes'
 
 const combineRoutes = [
   ...clientRoutes,
