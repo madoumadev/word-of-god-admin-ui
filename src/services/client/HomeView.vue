@@ -10,7 +10,7 @@
           muted="muted"
           playsinline="playsinline"
         >
-          <source src="public/cover.mp4" type="video/mp4" />
+          <source :src="videoSource" type="video/mp4" />
         </video>
       </div>
       <div class="z-10 bg-black bg-opacity-20 w-full h-full flex justify-center items-center">
@@ -66,3 +66,15 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      videoSource: `${import.meta.env.BASE_URL}cover.mp4`
+    };
+  },
+  mounted() {
+    this.$refs.video.play(); // Ensure video starts playing when component mounts
+  }
+};
+</script>
