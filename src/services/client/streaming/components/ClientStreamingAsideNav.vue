@@ -36,13 +36,17 @@ export default defineComponent({
       <div class="flex flex-col">
         <p class="capitalize text-gray-500 text-sm mb-4">БЛИЖАЙШАЯ ТРАНСЛЯЦИЯ</p>
         <div class="inline-flex items-center mb-2 space-x-2">
-          <HeroIcon icon-type="outline" icon-name="CalendarIcon" class="w-4 h-5 text-gray-500" />
+          <span class="w-6 h-6">
+            <HeroIcon icon-type="outline" icon-name="CalendarIcon" class="w-4 h-5 text-gray-500" />
+          </span>
           <p class="text-sm text-black capitalize" v-if="live?.snippet && live?.snippet?.localized">
             {{ live?.snippet?.localized?.title }}
           </p>
         </div>
         <div class="inline-flex items-center space-x-2">
-          <HeroIcon icon-type="outline" icon-name="ClockIcon" class="w-4 h-5 text-gray-500" />
+          <span class="w-6 h-6">
+            <HeroIcon icon-type="outline" icon-name="ClockIcon" class="w-4 h-5 text-gray-500" />
+          </span>
           <p class="text-sm capitalize text-black">
             В {{ timestampToLocalTime(live?.snippet?.publishedAt?.value)?.toString() }}
           </p>
@@ -60,7 +64,7 @@ export default defineComponent({
       <div class="flex flex-col space-y-2 pt-4">
         <p class="uppercase text-gray-500 text-sm mb-4">КОНТАКТЫ</p>
         <div class="">
-          <img src="../../../../assets/email.png" class="w-34 scale-110" alt="email" />
+          <img src="../../../../assets/email.png" class="w-34 email-addr scale-110" alt="email" />
         </div>
       </div>
     </div>

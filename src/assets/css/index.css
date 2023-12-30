@@ -30,7 +30,7 @@
     }
 
     .wfg-btn-primary {
-        @apply inline-flex items-center rounded-xl justify-center text-black px-4 py-2 transition-colors
+        @apply inline-flex items-center  bg-primary  rounded-xl justify-center text-white px-4 py-2 transition-colors
     }
 
     .menu-item-desktop{
@@ -81,4 +81,12 @@
     background: transparent;
     margin-bottom: 10px;
     margin-top: 10px;
+}
+
+.email-addr {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }

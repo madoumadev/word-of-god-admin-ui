@@ -29,7 +29,7 @@
             allowfullscreen
           ></iframe>
         </div>
-        <div v-if="liveStream" class="hidden lg:flex flex-col bg-white px-6 pt-3">
+        <div v-if="liveStream" class="hidden 2xl:flex flex-col bg-white px-6 pt-3">
           <p class="capitalize text-gray-400 text-sm mb-2">БЛИЖАЙШАЯ ТРАНСЛЯЦИЯ</p>
           <div class="inline-flex items-center mb-2 space-x-2">
             <div class="flex-shrink-0">

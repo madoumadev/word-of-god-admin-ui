@@ -1,9 +1,9 @@
 <template>
-  <div class="relative w-full overflow-hidden">
-    <div class="relative overflow-hidden h-screen flex items-center justify-center">
+  <div class="relative w-full overflow-hidden h-screen">
+    <div class="relative overflow-hidden h-full flex items-center justify-center">
       <div>
         <video
-          class="absolute w-full blur-sm object-cover h-screen -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+          class="absolute w-full blur-sm object-cover h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
           autoplay="autoplay"
           id="coverVideo"
           loop="loop"
@@ -16,24 +16,20 @@
       <div class="z-10 bg-black bg-opacity-20 w-full h-full flex justify-center items-center">
         <div class="lg:max-w-screen-md max-w-screen-sm mx-auto px-10 sm:px-0">
           <figure class="my-10 text-center">
-            <a
-              href=""
-              @click="$router.push({ name: 'HomeView' })"
-              class="flex flex-col items-center justify-center"
-            >
-              <span class="w-16 lg:w-32"
+            <div class="flex flex-col items-center justify-center">
+              <span class="w-16 lg:w-24"
                 ><img
                   src="https://wordofgod.ru/design/wog/img/o.png"
                   class="w-full h-full object-cover"
                   alt="word of God"
               /></span>
               <h1 class="text-white logo">Божье Слово Верно</h1>
-            </a>
+            </div>
 
-            <div class="grid lg:grid-cols-3 grid-cols-2 gap-4 pt-9 lg:gap-6">
+            <div class="grid lg:grid-cols-3 grid-cols-2 gap-4 pt-9">
               <router-link
                 :class="[index === menus.length - 1 ? 'lg:col-span-1 col-span-2' : '']"
-                class="p-4 lg:p-6 border-l-2 hover:bg-white backdrop-blur-xl hover:border-b-primary shadow-md rounded-md bg-black group bg-opacity-30 hover:bg-opacity-20 transition-all duration-200"
+                class="p-4 border-l-2 hover:bg-white backdrop-blur-xl hover:border-b-primary shadow-md rounded-md bg-black group bg-opacity-30 hover:bg-opacity-20 transition-all duration-200"
                 v-for="(menu, index) in menus"
                 :key="index"
                 :to="{ name: menu.link }"
