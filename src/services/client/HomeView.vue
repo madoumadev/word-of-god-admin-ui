@@ -34,7 +34,7 @@
                 :key="index"
                 :to="{ name: menu.link }"
               >
-                <span class="wfg-btn-primary uppercase text-white w-full group-hover:font-bold">
+                <span class="uppercase text-white w-full group-hover:font-bold">
                   {{ menu.title }}
                 </span>
               </router-link>
