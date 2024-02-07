@@ -2,7 +2,12 @@ import PredicationsListView from '@/services/admin/predications/views/Predicatio
 
 export const predicationsRoutes = [
   {
-    path: 'videos',
+    path: 'preaching',
+    name: 'PredicationsListView',
+    component: PredicationsListView
+  },
+  {
+    path: 'testimonies',
     name: 'PredicationsListView',
     component: PredicationsListView
   }
