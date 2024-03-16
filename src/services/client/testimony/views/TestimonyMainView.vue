@@ -5,7 +5,7 @@
     >
       <div v-if="!!params?.videoId" class="w-full bg-white sticky top-0 z-10">
         <div class="flex justify-between items-center px-4 py-3">
-          <span class="lg:block hidden line-clamp-1">ВИДЕОАРХИВ</span>
+          <span class="lg:block hidden line-clamp-1">Свидетельство</span>
 
           <div class="lg:hidden">
             <SearchInput />
@@ -95,7 +95,7 @@ import SearchInput from '../../../../components/shared/searchInput/SearchInput.v
 import NoData from '../../../../components/shared/NoData.vue'
 
 export default defineComponent({
-  name: 'PredicationsView',
+  name: 'TestimonyMainView',
   components: { NoData, SearchInput, VideoCard, ClientLayout, HeroIcon },
   methods: { timestampToLocalTime, getFormattedDate, useGetPredicationStatus },
 
@@ -108,8 +108,7 @@ export default defineComponent({
     const searchQuery = ref('')
 
     onBeforeMount(() => {
-      store.dispatch('clientVideosStore/getVideos', params.value?.videoId)
-      store.dispatch('predicationsStore/getVideoLive')
+      store.dispatch('clientTestimonyStore/getVideos', 'wL2Iybwnyr8') //Just for test
     })
 
     return {

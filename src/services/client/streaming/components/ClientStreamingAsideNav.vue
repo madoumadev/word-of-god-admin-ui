@@ -1,14 +1,15 @@
 <script>
-import { computed, defineComponent, onBeforeMount } from 'vue'
+import { computed, defineComponent, onMounted } from 'vue'
 import { mapGetters, useStore } from 'vuex'
 import AsideNavLayout from '@/components/shared/AsideNavLayout.vue'
 import HeroIcon from '@/components/icons/HeroIcon.vue'
 import timestampToLocalTime from '../../../../utils/timestampToLocalTime'
+import NoData from '../../../../components/shared/NoData.vue'
 
 export default defineComponent({
   name: 'ClientStreamingAsideNav',
   methods: { timestampToLocalTime },
-  components: { HeroIcon, AsideNavLayout },
+  components: { NoData, HeroIcon, AsideNavLayout },
 
   computed: {
     ...mapGetters({
@@ -19,7 +20,8 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const live = computed(() => store.getters['predicationsStore/liveStream'])
-    onBeforeMount(() => {
+
+    onMounted(() => {
       store.dispatch('predicationsStore/getVideoLive')
     })
 
@@ -32,7 +34,7 @@ export default defineComponent({
 
 <template>
   <AsideNavLayout class="bg-white">
-    <div class="mt-4 flex flex-col p-6 overflow-hidden space-y-10 divide-y h-full">
+    <div v-if="live" class="mt-4 flex flex-col p-6 overflow-hidden space-y-10 divide-y h-full">
       <div class="flex flex-col">
         <p class="capitalize text-gray-500 text-sm mb-4">БЛИЖАЙШАЯ ТРАНСЛЯЦИЯ</p>
         <div class="inline-flex items-center mb-2 space-x-2">
@@ -68,5 +70,6 @@ export default defineComponent({
         </div>
       </div>
     </div>
+    <NoData v-else />
   </AsideNavLayout>
 </template>

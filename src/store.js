@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 import { clientVideosStore } from './services/client/predications/store'
 import { predicationsStore } from './services/client/streaming/store'
 import { adminStreamStore } from './services/admin/streaming/store'
+import { clientTestimonyStore } from './services/client/testimony/store'
 
 export default createStore({
   state: {
@@ -29,6 +30,7 @@ export default createStore({
   modules: {
     clientVideosStore,
     predicationsStore,
-    adminStreamStore
+    adminStreamStore,
+    clientTestimonyStore
   }
 })

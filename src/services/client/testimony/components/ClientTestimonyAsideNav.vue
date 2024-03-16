@@ -8,7 +8,7 @@ import NoData from '../../../../components/shared/NoData.vue'
 import SearchInput from '../../../../components/shared/searchInput/SearchInput.vue'
 
 export default defineComponent({
-  name: 'ClientVideoAsideNav',
+  name: 'ClientTestimonyAsideNav',
   components: { SearchInput, NoData, VideoCard, AsideNavLayout },
 
   computed: {
@@ -28,7 +28,7 @@ export default defineComponent({
 
 <template>
   <AsideNavLayout class="bg-white py-4">
-    <div v-if="filteredVideos && filteredVideos.length" class="px-3 sticky top-0 z-10">
+    <div class="px-3 sticky top-0 z-10">
       <SearchInput />
     </div>
     <div

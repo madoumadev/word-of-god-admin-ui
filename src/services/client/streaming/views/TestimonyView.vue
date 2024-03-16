@@ -34,21 +34,24 @@
   </div>
 </template>
 <script>
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { useGetPredicationStatus } from '@/hooks/useGetPredicationStatus'
 import getFormattedDate from '../../../../utils/getFormattedDate'
 import { useStore } from 'vuex'
 
 export default defineComponent({
-  name: 'VideoStreamingClient',
+  name: 'TestimonyView',
+  components: {},
   methods: { getFormattedDate, useGetPredicationStatus },
 
   setup() {
     const store = useStore()
+    const isLoading = ref(false)
     const live = computed(() => store.getters['predicationsStore/liveStream'])
 
     return {
-      live
+      live,
+      isLoading
     }
   }
 })

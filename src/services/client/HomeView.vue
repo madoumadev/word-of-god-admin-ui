@@ -19,17 +19,18 @@
             <div class="flex flex-col items-center justify-center">
               <span class="w-16 lg:w-24"
                 ><img
+                  draggable="false"
                   src="https://wordofgod.ru/design/wog/img/o.png"
                   class="w-full h-full object-cover"
                   alt="word of God"
               /></span>
-              <h1 class="text-white logo">Божье Слово Верно</h1>
+              <h1 draggable="false" class="text-white logo select-none">Божье Слово Верно</h1>
             </div>
 
             <div class="grid lg:grid-cols-3 grid-cols-2 gap-4 pt-9">
               <router-link
                 :class="[index === menus.length - 1 ? 'lg:col-span-1 col-span-2' : '']"
-                class="p-4 border-l-2 hover:bg-white backdrop-blur-xl hover:border-b-primary shadow-md rounded-md bg-black group bg-opacity-30 hover:bg-opacity-20 transition-all duration-200"
+                class="p-6 border-l-2 hover:bg-white backdrop-blur-xl hover:border-b-primary shadow-md rounded-md bg-black group bg-opacity-30 hover:bg-opacity-20 transition-all duration-200"
                 v-for="(menu, index) in menus"
                 :key="index"
                 :to="{ name: menu.link }"
@@ -39,6 +40,9 @@
                 </span>
               </router-link>
             </div>
+          </figure>
+
+          <div class="">
             <svg
               class="w-6 h-6 lg:w-10 lg:h-10 mx-auto mb-3 mt-6 lg:mt-10 text-white text-opacity-40"
               aria-hidden="true"
@@ -55,74 +59,68 @@
                 {{ news.isActive ? news.content : staticInfo.content }}
               </p>
             </blockquote>
-          </figure>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      videoSource: `${import.meta.env.BASE_URL}cover.mp4`,
-      staticInfo: {
-        id: 1,
-        content:
-          'Когда я думаю об Африке, Индии и о всём мире, миллионы язычников кричат и вопиют о\n' +
-          '                милости, и кто пойдёт? Не брошюры им раздавать, но принести им Иисуса Христа. Кто-то\n' +
-          '                в Его Присутствии, как Моисей, который мог бы отправиться туда и показать им\n' +
-          '                истинное избавление. Не заставлять их присоединяться к церкви или пожимать руку и\n' +
-          '                иметь вероучение, но донести их душе избавление; какой-нибудь хороший благочестивый\n' +
-          '                человек.'
-      },
-      news: {
-        id: 1,
-        content:
-          'С 4 по 6 января 2024г. в скинии планируется проведение молодежных служений.\n' +
-          'Начало служений в 12:00, обед, затем общение.\n' +
-          'Желающие посетить служения и имеющие необходимость в размещении, могут отправить запрос на info@wordofgod.ru',
-        isActive: true
-      },
-      menus: [
-        {
-          title: 'Главная',
-          link: 'PredicationsView'
-        },
-        {
-          title: 'Архив',
-          link: 'PredicationsView'
-        },
-        {
-          title: 'Трансляция',
-          link: 'StreamingClientDirection'
-        },
-        {
-          title: 'Дневник',
-          link: 'StreamingClientDirection'
-        },
-        {
-          title: 'Свидетельство',
-          link: 'StreamingClientDirection'
-        },
-        {
-          title: 'Поклонения',
-          link: 'PredicationsView'
-        },
-        {
-          title: 'Фото',
-          link: 'StreamingClientDirection'
-        },
-        {
-          title: 'О нас',
-          link: 'StreamingClientDirection'
-        },
-        {
-          title: 'Контакты',
-          link: 'StreamingClientDirection'
-        }
-      ]
-    }
-  }
+<script setup>
+const videoSource = `${import.meta.env.BASE_URL}cover.mp4`
+const staticInfo = {
+  id: 1,
+  content:
+    'Когда я думаю об Африке, Индии и о всём мире, миллионы язычников кричат и вопиют о\n' +
+    '                милости, и кто пойдёт? Не брошюры им раздавать, но принести им Иисуса Христа. Кто-то\n' +
+    '                в Его Присутствии, как Моисей, который мог бы отправиться туда и показать им\n' +
+    '                истинное избавление. Не заставлять их присоединяться к церкви или пожимать руку и\n' +
+    '                иметь вероучение, но донести их душе избавление; какой-нибудь хороший благочестивый\n' +
+    '                человек.'
 }
+const news = {
+  id: 1,
+  content:
+    'С 4 по 6 января 2024г. в скинии планируется проведение молодежных служений.\n' +
+    'Начало служений в 12:00, обед, затем общение.\n' +
+    'Желающие посетить служения и имеющие необходимость в размещении, могут отправить запрос на info@wordofgod.ru',
+  isActive: true
+}
+const menus = [
+  {
+    title: 'Обьявления',
+    link: 'NewsView'
+  },
+  {
+    title: 'Архив',
+    link: 'PredicationsView'
+  },
+  {
+    title: 'Трансляция',
+    link: 'StreamingClientDirection'
+  },
+  {
+    title: 'Дневник',
+    link: 'StreamingClientDirection'
+  },
+  {
+    title: 'Свидетельство',
+    link: 'PredicationsView'
+  },
+  {
+    title: 'Поклонения',
+    link: 'PredicationsView'
+  },
+  {
+    title: 'Фото',
+    link: 'StreamingClientDirection'
+  },
+  {
+    title: 'О нас',
+    link: 'StreamingClientDirection'
+  },
+  {
+    title: 'Контакты',
+    link: 'StreamingClientDirection'
+  }
+]
 </script>

@@ -29,11 +29,6 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const radio = computed(() => store.getters['predicationsStore/radio'])
-
-    onMounted(() => {
-      store.dispatch('predicationsStore/getRadios', 4)
-    })
-
     return {
       radio
     }

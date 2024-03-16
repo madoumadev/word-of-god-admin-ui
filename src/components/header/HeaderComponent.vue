@@ -1,7 +1,7 @@
 <template>
-  <header class="lg:pl-4 bg-gray-50 lg:border-0 border-b">
-    <nav class="py-4">
-      <div class="flex items-center justify-between max-w-screen-7xl px-4 mx-auto">
+  <header class="bg-gray-50 lg:border-0 border-b sticky top-0 z-10">
+    <nav class="lg:px-5 py-4">
+      <div class="flex items-center justify-between max-w-screen-xl mx-auto">
         <a href="" @click="$router.push({ name: 'HomeView' })" class="inline-flex space-x-2">
           <img class="w-8 h-8 object-cover" src="@/assets/logo.png" alt="" />
           <h1 class="uppercase hidden sm:block text-primary hover:text-blue-900 sm:text-2xl">
@@ -27,17 +27,32 @@
         <div v-else class="inline-flex lg:space-x-4">
           <router-link
             :to="{ name: 'PredicationsView', params: { ...route.params } }"
-            class="text-gray-500 px-4 py-1.5 rounded-md"
+            class="text-gray-500 px-2 py-1.5 rounded-md"
             active-class="text-primary bg-white font-bold"
           >
             <span>Видео</span>
           </router-link>
+
           <router-link
             :to="{ name: 'StreamingClientDirection' }"
-            class="text-gray-500 px-4 py-1.5 rounded-md"
+            class="text-gray-500 px-2 py-1.5 rounded-md"
             active-class="text-primary bg-white font-bold"
           >
             <span>Трансляция</span>
+          </router-link>
+          <router-link
+            :to="{ name: 'TestimonyMainView' }"
+            class="text-gray-500 px-2 py-1.5 rounded-md"
+            active-class="text-primary bg-white font-bold"
+          >
+            <span>Свидетельство</span>
+          </router-link>
+          <router-link
+            :to="{ name: 'NewsView' }"
+            class="text-gray-500 px-2 py-1.5 rounded-md"
+            active-class="text-primary bg-white font-bold"
+          >
+            <span>Обьявления</span>
           </router-link>
         </div>
       </div>
@@ -58,7 +73,9 @@ const clientRoutes = [
   'PredicationsView',
   'VideoStreamingClient',
   'StreamingClientDirection',
-  'AudioStreamingClient'
+  'AudioStreamingClient',
+  'TestimonyMainView',
+  'NewsView'
 ]
 
 function isAdminRoute() {
